@@ -68,5 +68,14 @@
         [
             "[\\w]+[cC]lassName[\"']?\\s*:\\s*`([^`]*)`"
         ]
-    ]
+    ],
+    // suggested by arktype
+    // allow autocomplete for ArkType expressions like "string | num"
+    "editor.quickSuggestions": {
+        "strings": "on"
+    },
+    // prioritize ArkType's "type" for autoimports
+    "typescript.preferences.autoImportSpecifierExcludeRegexes": [
+        "^(node:)?os$"
+    ],
 }

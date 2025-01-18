@@ -56,7 +56,7 @@ const RouterDevtools =
               import("@tanstack/router-devtools").then((res) => ({
                   default: res.TanStackRouterDevtools,
                   // For Embedded Mode
-                  // default: res.TanStackRouterDevtoolsPanel
+                  //   default: res.TanStackRouterDevtoolsPanel,
               })),
           )
         : () => null;
