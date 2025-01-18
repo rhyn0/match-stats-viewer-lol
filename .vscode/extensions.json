@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "vitest.explorer",
+        "moalamri.inline-fold",
+        "YoavBls.pretty-ts-errors",
+        "bradlc.vscode-tailwindcss",
+        "biomejs.biome",
+    ]
+}
