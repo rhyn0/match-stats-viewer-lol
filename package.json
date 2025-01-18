@@ -43,6 +43,7 @@
         "lucide-react": "0.473.0",
         "react": "19.0.0",
         "react-dom": "19.0.0",
+        "recharts": "^2.15.0",
         "tailwind-merge": "2.6.0",
         "tailwindcss": "4.0.0-beta.9",
         "tailwindcss-animate": "1.0.7",
@@ -65,9 +66,15 @@
         "vite-tsconfig-paths": "^5.1.4",
         "vitest": "^3.0.2"
     },
+    "overrides": {
+        "react-is": "^19.0.0-rc-69d4b800-20241021"
+    },
     "lint-staged": {
         "*.+(ts|tsx)": ["pnpm run lint", "bash -c 'pnpm run lint:types'"],
         "*.test.+(ts|tsx)": ["pnpm test"],
         "*.json": "pnpm run format"
+    },
+    "pnpm": {
+        "onlyBuiltDependencies": ["@biomejs/biome"]
     }
 }
