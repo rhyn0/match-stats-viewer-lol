@@ -1,7 +1,7 @@
 /** Information regarding the teams, this will have id references to `players` */
 
 import { relations, sql } from "drizzle-orm";
-import { sqliteTable, integer, text } from "drizzle-orm/sqlite-core";
+import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { players } from "./player";
 
 export const teams = sqliteTable("participating_teams", {

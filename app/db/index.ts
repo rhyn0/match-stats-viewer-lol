@@ -1,5 +1,5 @@
-import { drizzle } from "drizzle-orm/libsql";
 import EnvData from "@/config/env";
+import { drizzle } from "drizzle-orm/libsql";
 const db = drizzle({
     connection: {
         url: EnvData.TURSO_DATABASE_URL,

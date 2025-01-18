@@ -1,12 +1,12 @@
+import DefaultCatchBoundary from "@/components/error-boundary";
+import NotFound from "@/components/not-found";
+import { TailwindIndicator } from "@/components/tailwind-indicator";
+import type { QueryClient } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRootRouteWithContext } from "@tanstack/react-router";
 import { Outlet, ScrollRestoration } from "@tanstack/react-router";
 import { Meta, Scripts } from "@tanstack/start";
-import type { QueryClient } from "@tanstack/react-query";
-import DefaultCatchBoundary from "@/components/error-boundary";
-import NotFound from "@/components/not-found";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import React from "react";
-import { TailwindIndicator } from "@/components/tailwind-indicator";
 
 // type imports
 import type { ReactNode } from "react";

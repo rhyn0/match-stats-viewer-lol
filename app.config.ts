@@ -1,6 +1,6 @@
-import { defineConfig } from '@tanstack/start/config'
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "@tanstack/start/config";
 import viteTsConfigPaths from "vite-tsconfig-paths";
-import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
     vite: {
         plugins: [
@@ -8,9 +8,9 @@ export default defineConfig({
                 projects: ["./tsconfig.json"],
             }),
             tailwindcss(),
-        ]
+        ],
     },
     server: {
-        preset: "vercel"
-    }
-})
+        preset: "vercel",
+    },
+});

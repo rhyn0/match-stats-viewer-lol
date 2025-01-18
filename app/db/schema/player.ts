@@ -1,9 +1,9 @@
 /** Specifics about player performance in the tournament. */
 import {
-    sqliteTable,
     integer,
-    uniqueIndex,
+    sqliteTable,
     text,
+    uniqueIndex,
 } from "drizzle-orm/sqlite-core";
 import { teams } from "./team";
 

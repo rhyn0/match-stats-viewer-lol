@@ -1,11 +1,11 @@
 /** This table defines a singular player in a match and any statistics we want to associate with this occurrence of gameplay. */
 
-import { sqliteTable, integer, text } from "drizzle-orm/sqlite-core";
+import { playerPositionOptions } from "@/types";
 import { relations } from "drizzle-orm";
+import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { champions } from "./champion";
 import { matches } from "./match";
 import { players } from "./player";
-import { champions } from "./champion";
-import { playerPositionOptions } from "@/types";
 
 export const playerMatches = sqliteTable("player_matches", {
     id: integer("id").primaryKey({ autoIncrement: true }),

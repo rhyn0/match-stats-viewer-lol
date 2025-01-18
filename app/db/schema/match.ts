@@ -1,7 +1,7 @@
 /** This is the raw input of matches for the tournament. */
 
-import { sqliteTable, integer } from "drizzle-orm/sqlite-core";
 import { relations, sql } from "drizzle-orm";
+import { integer, sqliteTable } from "drizzle-orm/sqlite-core";
 import { playerMatches } from "./player-match";
 import { teams } from "./team";
 

@@ -8,20 +8,14 @@
         "strictNullChecks": true,
         "baseUrl": ".",
         "paths": {
-            "@/*": [
-                "./app/*"
-            ]
+            "@/*": ["./app/*"]
         },
         "allowJs": true,
         "forceConsistentCasingInFileNames": true,
         "noFallthroughCasesInSwitch": true,
         "noUncheckedIndexedAccess": true,
         "noEmit": true,
-        "exactOptionalPropertyTypes": true,
+        "exactOptionalPropertyTypes": true
     },
-    "include": [
-        "app/**/*.ts",
-        "app/**/*.tsx",
-        "drizzle.config.ts",
-    ]
+    "include": ["app/**/*.ts", "app/**/*.tsx", "drizzle.config.ts"]
 }
