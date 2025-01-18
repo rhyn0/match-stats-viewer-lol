@@ -52,14 +52,20 @@
         "@types/react-dom": "^19.0.3",
         "@vitejs/plugin-react": "^4.3.4",
         "@vitest/coverage-istanbul": "^3.0.2",
+        "husky": "^9.1.7",
         "lint-staged": "^15.4.1",
         "typescript": "^5.7.3",
         "vite-tsconfig-paths": "^5.1.4",
         "vitest": "^3.0.2"
     },
     "lint-staged": {
-        "*.+(ts|tsx)": ["pnpm run lint", "bash -c 'pnpm run lint:types'"],
-        "*.test.+(ts|tsx)": ["pnpm test"],
+        "*.+(ts|tsx)": [
+            "pnpm run lint",
+            "bash -c 'pnpm run lint:types'"
+        ],
+        "*.test.+(ts|tsx)": [
+            "pnpm test"
+        ],
         "*.json": "pnpm run format"
     }
 }
