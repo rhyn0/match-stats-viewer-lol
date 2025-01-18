@@ -50,5 +50,23 @@
     "editor.codeActionsOnSave": {
         "quickfix.biome": "explicit"
     },
-    "testing.automaticallyOpenTestResults": "openOnTestFailure"
+    "testing.automaticallyOpenTestResults": "openOnTestFailure",
+    "tailwindCSS.classAttributes": [
+        "class",
+        "className",
+    ],
+    "tailwindCSS.experimental.classRegex": [
+        [
+            "\\b\\w+[cC]lassName\\s*=\\s*[\"']([^\"']*)[\"']"
+        ],
+        [
+            "\\b\\w+[cC]lassName\\s*=\\s*`([^`]*)`"
+        ],
+        [
+            "[\\w]+[cC]lassName[\"']?\\s*:\\s*[\"']([^\"']*)[\"']"
+        ],
+        [
+            "[\\w]+[cC]lassName[\"']?\\s*:\\s*`([^`]*)`"
+        ]
+    ]
 }
