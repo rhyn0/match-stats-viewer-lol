@@ -10,8 +10,14 @@
         "editor.defaultFormatter": "biomejs.biome"
     },
     "[typescriptreact]": {
-        "editor.defaultFormatter": "biomejs.biome"
+        "editor.defaultFormatter": "biomejs.biome",
+        "editor.quickSuggestions": {
+            "other": "on",
+            "comments": "off",
+            "strings": true
+        }
     },
+    "typescript.preferences.quoteStyle": "double",
     "[json]": {
         "editor.quickSuggestions": {
             "strings": true
@@ -43,5 +49,6 @@
     },
     "editor.codeActionsOnSave": {
         "quickfix.biome": "explicit"
-    }
+    },
+    "testing.automaticallyOpenTestResults": "openOnTestFailure"
 }
