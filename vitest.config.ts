@@ -5,8 +5,15 @@ export default defineConfig({
     plugins: [viteTsConfigPaths()],
     test: {
         environment: "jsdom",
-        // setupFiles: ["./testing/vitest.setup.ts"],
-        reporters: ["basic"],
+        setupFiles: ["./testing/vitest.setup.ts"],
+        reporters: [
+            [
+                "default",
+                {
+                    summary: false,
+                },
+            ],
+        ],
         exclude: ["**/node_modules/**", "**/e2e/**"],
         coverage: {
             enabled: true,
@@ -15,7 +22,7 @@ export default defineConfig({
             reporter: ["text-summary", "html"],
             skipFull: true,
         },
-        // include: ["testing/**/*.test.ts?(x)"],
+        include: ["testing/**/*.test.ts?(x)"],
         globals: true,
     },
 });

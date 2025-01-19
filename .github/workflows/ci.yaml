@@ -33,13 +33,16 @@ jobs:
                   if [ ! -f .env.local ]; then 
                       cp .env.template .env.local;
                   fi
-                  pnpm run lint --quiet
+                  pnpm run lint
 
             - name: Run type checks
               run: pnpm run lint:types
 
             - name: Check for any diffs
               run: git diff --exit-code
+
+            - name: Run tests
+              run: pnpm test
 
             - name: Comment on Summary if Failure
               if: ${{ failure() }}
