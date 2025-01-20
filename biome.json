@@ -2,7 +2,7 @@
     "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
     "files": {
         "ignoreUnknown": true,
-        "ignore": [".vscode/*"]
+        "ignore": [".vscode/*", "app/routeTree.gen.ts"]
     },
     "vcs": {
         "enabled": true,
@@ -25,7 +25,6 @@
     },
     "linter": {
         "enabled": true,
-        "ignore": ["app/routeTree.gen.ts"],
         "rules": {
             "recommended": true,
             "a11y": { "noBlankTarget": "error" },
