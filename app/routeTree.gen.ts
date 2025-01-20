@@ -10,66 +10,123 @@
 
 // Import Routes
 
-import { Route as rootRoute } from "./routes/__root";
-import { Route as IndexImport } from "./routes/index";
+import { Route as rootRoute } from './routes/__root'
+import { Route as IndexImport } from './routes/index'
+import { Route as UploadIndexImport } from './routes/upload/index'
+import { Route as StatsTeamImport } from './routes/stats/team'
+import { Route as StatsPlayerImport } from './routes/stats/player'
 
 // Create/Update Routes
 
 const IndexRoute = IndexImport.update({
-    id: "/",
-    path: "/",
-    getParentRoute: () => rootRoute,
-} as any);
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const UploadIndexRoute = UploadIndexImport.update({
+  id: '/upload/',
+  path: '/upload/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const StatsTeamRoute = StatsTeamImport.update({
+  id: '/stats/team',
+  path: '/stats/team',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const StatsPlayerRoute = StatsPlayerImport.update({
+  id: '/stats/player',
+  path: '/stats/player',
+  getParentRoute: () => rootRoute,
+} as any)
 
 // Populate the FileRoutesByPath interface
 
-declare module "@tanstack/react-router" {
-    interface FileRoutesByPath {
-        "/": {
-            id: "/";
-            path: "/";
-            fullPath: "/";
-            preLoaderRoute: typeof IndexImport;
-            parentRoute: typeof rootRoute;
-        };
+declare module '@tanstack/react-router' {
+  interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
     }
+    '/stats/player': {
+      id: '/stats/player'
+      path: '/stats/player'
+      fullPath: '/stats/player'
+      preLoaderRoute: typeof StatsPlayerImport
+      parentRoute: typeof rootRoute
+    }
+    '/stats/team': {
+      id: '/stats/team'
+      path: '/stats/team'
+      fullPath: '/stats/team'
+      preLoaderRoute: typeof StatsTeamImport
+      parentRoute: typeof rootRoute
+    }
+    '/upload/': {
+      id: '/upload/'
+      path: '/upload'
+      fullPath: '/upload'
+      preLoaderRoute: typeof UploadIndexImport
+      parentRoute: typeof rootRoute
+    }
+  }
 }
 
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
-    "/": typeof IndexRoute;
+  '/': typeof IndexRoute
+  '/stats/player': typeof StatsPlayerRoute
+  '/stats/team': typeof StatsTeamRoute
+  '/upload': typeof UploadIndexRoute
 }
 
 export interface FileRoutesByTo {
-    "/": typeof IndexRoute;
+  '/': typeof IndexRoute
+  '/stats/player': typeof StatsPlayerRoute
+  '/stats/team': typeof StatsTeamRoute
+  '/upload': typeof UploadIndexRoute
 }
 
 export interface FileRoutesById {
-    __root__: typeof rootRoute;
-    "/": typeof IndexRoute;
+  __root__: typeof rootRoute
+  '/': typeof IndexRoute
+  '/stats/player': typeof StatsPlayerRoute
+  '/stats/team': typeof StatsTeamRoute
+  '/upload/': typeof UploadIndexRoute
 }
 
 export interface FileRouteTypes {
-    fileRoutesByFullPath: FileRoutesByFullPath;
-    fullPaths: "/";
-    fileRoutesByTo: FileRoutesByTo;
-    to: "/";
-    id: "__root__" | "/";
-    fileRoutesById: FileRoutesById;
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/stats/player' | '/stats/team' | '/upload'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/stats/player' | '/stats/team' | '/upload'
+  id: '__root__' | '/' | '/stats/player' | '/stats/team' | '/upload/'
+  fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-    IndexRoute: typeof IndexRoute;
+  IndexRoute: typeof IndexRoute
+  StatsPlayerRoute: typeof StatsPlayerRoute
+  StatsTeamRoute: typeof StatsTeamRoute
+  UploadIndexRoute: typeof UploadIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-    IndexRoute: IndexRoute,
-};
+  IndexRoute: IndexRoute,
+  StatsPlayerRoute: StatsPlayerRoute,
+  StatsTeamRoute: StatsTeamRoute,
+  UploadIndexRoute: UploadIndexRoute,
+}
 
 export const routeTree = rootRoute
-    ._addFileChildren(rootRouteChildren)
-    ._addFileTypes<FileRouteTypes>();
+  ._addFileChildren(rootRouteChildren)
+  ._addFileTypes<FileRouteTypes>()
 
 /* ROUTE_MANIFEST_START
 {
@@ -77,11 +134,23 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/stats/player",
+        "/stats/team",
+        "/upload/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/stats/player": {
+      "filePath": "stats/player.tsx"
+    },
+    "/stats/team": {
+      "filePath": "stats/team.tsx"
+    },
+    "/upload/": {
+      "filePath": "upload/index.tsx"
     }
   }
 }
