@@ -67,6 +67,13 @@
         ],
         [
             "[\\w]+[cC]lassName[\"']?\\s*:\\s*`([^`]*)`"
+        ],
+        // https://cva.style/docs/getting-started/installation
+        [
+            "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"
+        ],
+        [
+            "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"
         ]
     ],
     // suggested by arktype
