@@ -1,13 +1,9 @@
-/** Statistics about each agent's performance in the tournament. */
-
-import { relations } from "drizzle-orm";
 import {
     integer,
     sqliteTable,
     text,
     uniqueIndex,
 } from "drizzle-orm/sqlite-core";
-import { playerMatches } from "./player-match";
 
 // TODO: this isnt valorant
 export const championNameEnum = [
@@ -50,7 +46,3 @@ export const champions = sqliteTable(
     },
     (agents) => [uniqueIndex("agent_name_uniq_idx").on(agents.name)],
 );
-
-export const championInPlayerMatchRel = relations(champions, ({ many }) => ({
-    championInPlayerMatchRel: many(playerMatches),
-}));
