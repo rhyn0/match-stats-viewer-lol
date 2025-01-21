@@ -30,7 +30,7 @@
     "testing.alwaysRevealTestOnStateChange": true,
     "testing.automaticallyOpenPeekViewDuringAutoRun": true,
     "testing.automaticallyOpenPeekView": "failureInVisibleDocument",
-    "testing.openTesting": "openOnTestFailure",
+    "vitest.rootConfig": "vitest.config.ts",
     // editor view settings
     "editor.defaultFormatter": "biomejs.biome",
     "editor.tabSize": 4,
