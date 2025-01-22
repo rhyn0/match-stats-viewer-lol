@@ -20,6 +20,7 @@ export default defineConfig({
             provider: "istanbul",
             include: ["app/**"],
             reporter: ["text-summary", "html"],
+            exclude: ["app/routeTree.gen.ts"],
             skipFull: true,
         },
         include: ["testing/**/*.test.ts?(x)"],
