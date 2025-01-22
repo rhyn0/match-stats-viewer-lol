@@ -19,7 +19,7 @@ export function Header({ className }: HeaderProps) {
                         <Link
                             to="/"
                             resetScroll={false}
-                            className="flex items-center space-x-2 align-middle h-full"
+                            className="flex items-center space-x-2 align-middle h-full dark:text-white"
                         >
                             {/* <img
                                 src="/img/slovct-logo.png"
@@ -46,7 +46,7 @@ export function Header({ className }: HeaderProps) {
                                     "mb-1 w-9 px-0 align-middle",
                                 )}
                             >
-                                <Icons.github className="size-5" />
+                                <Icons.github className="size-5 dark:text-white" />
                                 <span className="sr-only">GitHub</span>
                             </div>
                         </a>

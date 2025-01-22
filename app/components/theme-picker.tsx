@@ -14,7 +14,7 @@ export function ThemePicker() {
         <DropdownMenu>
             <DropdownMenuTrigger>
                 <Sun className="h-[1.5rem] w-[1.3rem] dark:hidden" />
-                <Moon className="hidden h-5 w-5 dark:block" />
+                <Moon className="hidden h-5 w-5 dark:block dark:text-white" />
                 <span className="sr-only">Toggle theme</span>
             </DropdownMenuTrigger>
             <DropdownMenuContent>

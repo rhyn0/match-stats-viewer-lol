@@ -18,6 +18,17 @@ const navComponents = {
             },
         ]),
     },
+    information: {
+        triggerTitle: "Tournament Information",
+        links: linkOptions([
+            {
+                label: "Teams",
+                to: "/team/info",
+                description:
+                    "View all teams participating in the tournament. Check out their rosters.",
+            },
+        ]),
+    },
     //     playoffs: {
     //         triggerTitle: "Playoffs",
     //         links: linkOptions([

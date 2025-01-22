@@ -13,6 +13,7 @@ import type { ReactNode } from "react";
 
 // CSS import
 import "../global.css";
+import { Header } from "@/components/header";
 
 export const Route = createRootRouteWithContext<{
     queryClient: QueryClient;
@@ -68,6 +69,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
                 <Meta />
             </head>
             <body>
+                <Header />
                 {children}
                 <ScrollRestoration />
                 <ReactQueryDevtools initialIsOpen={false} />

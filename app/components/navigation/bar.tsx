@@ -29,11 +29,17 @@ function MainNavigationBar() {
         <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
                 <NavigationMenuItem>
-                    <NavigationLink to="/upload" title="Upload Match Stats" />
+                    <NavigationLink
+                        to="/upload"
+                        title="Upload Match Stats"
+                        className="dark:text-white"
+                    >
+                        Upload
+                    </NavigationLink>
                 </NavigationMenuItem>
                 {Object.entries(navComponents).map(([key, navigation]) => (
                     <NavigationMenuItem key={key}>
-                        <NavigationMenuTrigger>
+                        <NavigationMenuTrigger className="dark:text-white">
                             {navigation.triggerTitle}
                         </NavigationMenuTrigger>
                         <NavigationMenuContent>
