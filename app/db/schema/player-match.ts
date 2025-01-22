@@ -1,6 +1,6 @@
 /** This table defines a singular player in a match and any statistics we want to associate with this occurrence of gameplay. */
 
-import { playerPositionOptions } from "@/types";
+import { playerPositionOptions } from "@/types/league";
 import { relations } from "drizzle-orm";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { champions } from "./champion";

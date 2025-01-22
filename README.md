@@ -2,6 +2,29 @@
 
 Similar to my [Valorant one](https://github.com/rhyn0/match-stats-viewer) but for League. Hopefully to build a viewer of statistics and cool graphs to highlight performances of players.
 
+## Getting Started 
+
+First, run the development server:
+
+```bash
+pnpm dev
+```
+
+Then, configure access to a LibSQL database. For the ease of startup a `docker-compose.yaml` is provided in the `./docker` folder.
+Then additionally use [Drizzle Kit](https://orm.drizzle.team/kit-docs) to initialize the schema. To start the dockerized database:
+
+```bash
+docker compose -f docker/docker-compose.yaml up --build --detach
+# test with Turso CLI that you can connect
+# turso db shell http://localhost:8080
+# if using nvm
+# nvm use
+
+# setup the .env.local file
+# cp .env.template .env.local
+pnpm push
+```
+
 ## Packages Used
 
 This project uses a LibSQL database to store the data and model the data.

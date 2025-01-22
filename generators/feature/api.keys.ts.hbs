@@ -1,0 +1,7 @@
+const {{ camelCase name }}Keys = {
+    all: ["{{ kebabCase name }}"] as const,
+    detail: (id: number | string) => [...{{ camelCase name }}Keys.all, id] as const,
+};
+
+export default {{ camelCase name }}Keys;
+export type KeyT = typeof {{ camelCase name }}Keys;

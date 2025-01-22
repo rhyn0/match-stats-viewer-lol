@@ -13,6 +13,8 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as UploadIndexImport } from './routes/upload/index'
+import { Route as TeamInfoImport } from './routes/team/info'
+import { Route as TeamTeamIdImport } from './routes/team/$teamId'
 import { Route as StatsTeamImport } from './routes/stats/team'
 import { Route as StatsPlayerImport } from './routes/stats/player'
 
@@ -27,6 +29,18 @@ const IndexRoute = IndexImport.update({
 const UploadIndexRoute = UploadIndexImport.update({
   id: '/upload/',
   path: '/upload/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const TeamInfoRoute = TeamInfoImport.update({
+  id: '/team/info',
+  path: '/team/info',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const TeamTeamIdRoute = TeamTeamIdImport.update({
+  id: '/team/$teamId',
+  path: '/team/$teamId',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -67,6 +81,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StatsTeamImport
       parentRoute: typeof rootRoute
     }
+    '/team/$teamId': {
+      id: '/team/$teamId'
+      path: '/team/$teamId'
+      fullPath: '/team/$teamId'
+      preLoaderRoute: typeof TeamTeamIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/team/info': {
+      id: '/team/info'
+      path: '/team/info'
+      fullPath: '/team/info'
+      preLoaderRoute: typeof TeamInfoImport
+      parentRoute: typeof rootRoute
+    }
     '/upload/': {
       id: '/upload/'
       path: '/upload'
@@ -83,6 +111,8 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/stats/player': typeof StatsPlayerRoute
   '/stats/team': typeof StatsTeamRoute
+  '/team/$teamId': typeof TeamTeamIdRoute
+  '/team/info': typeof TeamInfoRoute
   '/upload': typeof UploadIndexRoute
 }
 
@@ -90,6 +120,8 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/stats/player': typeof StatsPlayerRoute
   '/stats/team': typeof StatsTeamRoute
+  '/team/$teamId': typeof TeamTeamIdRoute
+  '/team/info': typeof TeamInfoRoute
   '/upload': typeof UploadIndexRoute
 }
 
@@ -98,15 +130,36 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/stats/player': typeof StatsPlayerRoute
   '/stats/team': typeof StatsTeamRoute
+  '/team/$teamId': typeof TeamTeamIdRoute
+  '/team/info': typeof TeamInfoRoute
   '/upload/': typeof UploadIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/stats/player' | '/stats/team' | '/upload'
+  fullPaths:
+    | '/'
+    | '/stats/player'
+    | '/stats/team'
+    | '/team/$teamId'
+    | '/team/info'
+    | '/upload'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/stats/player' | '/stats/team' | '/upload'
-  id: '__root__' | '/' | '/stats/player' | '/stats/team' | '/upload/'
+  to:
+    | '/'
+    | '/stats/player'
+    | '/stats/team'
+    | '/team/$teamId'
+    | '/team/info'
+    | '/upload'
+  id:
+    | '__root__'
+    | '/'
+    | '/stats/player'
+    | '/stats/team'
+    | '/team/$teamId'
+    | '/team/info'
+    | '/upload/'
   fileRoutesById: FileRoutesById
 }
 
@@ -114,6 +167,8 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   StatsPlayerRoute: typeof StatsPlayerRoute
   StatsTeamRoute: typeof StatsTeamRoute
+  TeamTeamIdRoute: typeof TeamTeamIdRoute
+  TeamInfoRoute: typeof TeamInfoRoute
   UploadIndexRoute: typeof UploadIndexRoute
 }
 
@@ -121,6 +176,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   StatsPlayerRoute: StatsPlayerRoute,
   StatsTeamRoute: StatsTeamRoute,
+  TeamTeamIdRoute: TeamTeamIdRoute,
+  TeamInfoRoute: TeamInfoRoute,
   UploadIndexRoute: UploadIndexRoute,
 }
 
@@ -137,6 +194,8 @@ export const routeTree = rootRoute
         "/",
         "/stats/player",
         "/stats/team",
+        "/team/$teamId",
+        "/team/info",
         "/upload/"
       ]
     },
@@ -148,6 +207,12 @@ export const routeTree = rootRoute
     },
     "/stats/team": {
       "filePath": "stats/team.tsx"
+    },
+    "/team/$teamId": {
+      "filePath": "team/$teamId.tsx"
+    },
+    "/team/info": {
+      "filePath": "team/info.tsx"
     },
     "/upload/": {
       "filePath": "upload/index.tsx"

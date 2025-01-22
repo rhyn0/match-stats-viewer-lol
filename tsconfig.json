@@ -17,5 +17,12 @@
         "noEmit": true,
         "exactOptionalPropertyTypes": true
     },
-    "include": ["app/**/*.ts", "app/**/*.tsx", "drizzle.config.ts"]
+    "include": [
+        "app/**/*.ts",
+        "app/**/*.tsx",
+        "drizzle.config.ts",
+        "testing/**/*.ts",
+        "scripts/*.ts",
+        "testing/**/*.tsx"
+    ]
 }
