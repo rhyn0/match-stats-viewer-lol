@@ -43,3 +43,5 @@ export const matchesForTeamRel = relations(teams, ({ many }) => ({
     matchesForTeamARel: many(matches, { relationName: "teamDetailsARel" }),
     matchesForTeamBRel: many(matches, { relationName: "teamDetailsBRel" }),
 }));
+
+export type MatchSelectT = typeof matches.$inferSelect;

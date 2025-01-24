@@ -11,10 +11,9 @@ type Key = (typeof teamKeys)["all"];
 
 export interface useGetTeamsQueryProps
     extends ExtraQueryOptionsI<ListTeamReturnI, Key> {}
-export default function useBerryFirmnessQuery({
+export default function useListTeamsQuery({
     ...options
 }: useGetTeamsQueryProps = {}) {
-    // @ts-expect-error - this is an error with drizzle not giving types for selecting with relationships
     return useSuspenseQuery({
         ...queryAllTeamsQueryOptions(),
         ...options,
