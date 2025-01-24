@@ -1,5 +1,4 @@
 import env from "@/config/env";
-import * as championsSchema from "@/db/schema/champion";
 import * as matchesSchema from "@/db/schema/match";
 import * as playersSchema from "@/db/schema/player";
 import * as playerMatchesSchema from "@/db/schema/player-match";
@@ -13,7 +12,6 @@ const queryClient = createClient({
 });
 const db = drizzle(queryClient, {
     schema: {
-        ...championsSchema,
         ...matchesSchema,
         ...playerMatchesSchema,
         ...teamsSchema,
