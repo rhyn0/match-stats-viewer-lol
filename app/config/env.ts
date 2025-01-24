@@ -2,7 +2,8 @@ import { type } from "arktype";
 import { config } from "dotenv";
 
 const path = process.env.NODE_ENV === "production" ? ".env" : ".env.local";
-config({ path });
+const myObject = {};
+config({ path, processEnv: myObject });
 
 const envData = type({
     "+": "delete",
@@ -12,7 +13,9 @@ const envData = type({
 
 export type TEnvData = typeof envData.infer;
 
-const parsed = envData(process.env);
+// const parsed = envData(process.env);
+// something seems to be loading other .env into my environment
+const parsed = envData(myObject);
 if (parsed instanceof type.errors) {
     throw new Error("Invalid process.env Data for this application");
 }

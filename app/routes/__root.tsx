@@ -68,7 +68,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
             <head>
                 <Meta />
             </head>
-            <body>
+            <body className="bg-background">
                 <Header />
                 {children}
                 <ScrollRestoration />

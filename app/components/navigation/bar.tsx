@@ -47,8 +47,13 @@ function MainNavigationBar() {
                                 {navigation.links.map((link) => (
                                     <li key={link.label}>
                                         <NavigationLink to={link.to}>
-                                            <TypoH4>{link.label}</TypoH4>
-                                            <TypoP>{link.description}</TypoP>
+                                            {/* Due to implementation in NavigationLink, require singular child here */}
+                                            <>
+                                                <TypoH4>{link.label}</TypoH4>
+                                                <TypoP>
+                                                    {link.description}
+                                                </TypoP>
+                                            </>
                                         </NavigationLink>
                                     </li>
                                 ))}
