@@ -24,5 +24,5 @@ export async function queryAllTeams(): Promise<ListTeamReturnI> {
 export const queryAllTeamsQueryOptions = () =>
     queryOptions({
         queryKey: teamsKeys.all,
-        queryFn: async () => await queryAllTeams(),
+        queryFn: queryAllTeams,
     });

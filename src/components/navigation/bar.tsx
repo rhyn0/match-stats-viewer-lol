@@ -24,7 +24,11 @@ function MainNavigationBar() {
         <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
                 <NavigationMenuItem>
-                    <NavigationLink href="/upload" className="dark:text-white">
+                    <NavigationLink
+                        href="/upload"
+                        className="dark:text-white"
+                        prefetch={false}
+                    >
                         Upload
                     </NavigationLink>
                 </NavigationMenuItem>
@@ -37,7 +41,10 @@ function MainNavigationBar() {
                             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                                 {navigation.links.map((link) => (
                                     <li key={link.label}>
-                                        <NavigationLink href={link.to}>
+                                        <NavigationLink
+                                            href={link.to}
+                                            prefetch={false}
+                                        >
                                             {/* Due to implementation in NavigationLink, require singular child here */}
                                             <>
                                                 <TypoH4>{link.label}</TypoH4>

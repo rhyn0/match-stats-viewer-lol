@@ -19,6 +19,7 @@ export function Header({ className }: HeaderProps) {
                         <Link
                             href="/"
                             scroll={false}
+                            prefetch={false}
                             className="flex items-center space-x-2 align-middle h-full dark:text-white"
                         >
                             {/* <img

@@ -8,6 +8,14 @@ export const siteConfig = {
             template: "%s | Match Stats Viewer",
         },
         description: "Performance data for a local LoL Tournament.",
+        creator: "Ryan Ozawa",
+        keywords: [
+            "SLOLCS",
+            "Next.js",
+            "React",
+            "Tailwind CSS",
+            "Server Components",
+        ],
     },
 };
 
