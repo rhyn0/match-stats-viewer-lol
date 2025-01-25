@@ -1,3 +1,5 @@
+"use client";
+
 import { TypoH1 } from "@/components/typography/headings";
 import { Spinner } from "@/components/ui/spinner";
 import { queryListTeamStatsOptions } from "@/features/stat-teams/api/get-all-team-stats";
