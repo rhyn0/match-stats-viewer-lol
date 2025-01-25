@@ -1,2 +1,3 @@
 pnpx lint-staged
+pnpm lint:types
 pnpm test

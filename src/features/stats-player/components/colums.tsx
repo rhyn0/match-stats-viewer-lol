@@ -45,10 +45,15 @@ export const columns = [
             }),
         ],
     }),
-    playerColumnHelper.accessor("gamesPlayed", {
-        header: "Total Games Played",
-        meta: {
-            filterVariant: "range",
-        },
+    playerColumnHelper.group({
+        header: "Total Stats",
+        columns: [
+            playerColumnHelper.accessor("gamesPlayed", {
+                header: "Total Games Played",
+                meta: {
+                    filterVariant: "range",
+                },
+            }),
+        ],
     }),
 ];

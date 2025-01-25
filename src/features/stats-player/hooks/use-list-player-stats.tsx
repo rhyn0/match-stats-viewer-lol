@@ -1,4 +1,4 @@
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { queryAllPlayerStatsOptions } from "../api/list-player-stats";
 
 import type { ExtraQueryOptionsI } from "@/types";
@@ -12,7 +12,7 @@ export interface UseListPlayerStatsQueryProps
 export default function useListPlayerStatsQuery({
     ...options
 }: UseListPlayerStatsQueryProps = {}) {
-    return useSuspenseQuery({
+    return useQuery({
         ...queryAllPlayerStatsOptions(),
         ...options,
     });
