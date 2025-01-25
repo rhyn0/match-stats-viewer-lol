@@ -1,5 +1,4 @@
 import { calculateTeamStats } from "@/features/stat-teams/utils/team-matches-to-stats";
-import { describe, expect, it } from "vitest";
 
 describe("calculateTeamStats", () => {
     it("should calculate the stats for a team", () => {

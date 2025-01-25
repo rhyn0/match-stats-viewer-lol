@@ -1,6 +1,5 @@
 import sortByPosition from "@/lib/sort-by-position";
 import type { PlayerPositionT } from "@/types/league";
-import { describe, expect, it } from "vitest";
 
 describe("sortByPosition", () => {
     it("should sort players by designated position in descending lane order", () => {

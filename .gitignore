@@ -95,3 +95,6 @@ sketch
 !.env.template
 data.sqld/
 coverage/
+.next/
+tsconfig.tsbuildinfo
+.vercel
