@@ -2,6 +2,7 @@ import { Header } from "@/components/header";
 import Providers from "@/components/providers";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { siteConfig } from "@/config/site";
+import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 
 // type imports
@@ -35,6 +36,7 @@ export default function RootLayout({
                     {children}
                     <TailwindIndicator />
                 </Providers>
+                <Analytics />
             </body>
         </html>
     );
