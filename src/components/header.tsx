@@ -3,7 +3,10 @@ import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { Icons } from "@/icons";
 import { cn } from "@/lib/cn";
+import Image from "next/image";
 import Link from "next/link";
+import logo from "../public/logo.png";
+import LoginButton from "./login-button";
 import { ThemePicker } from "./theme-picker";
 
 interface HeaderProps {
@@ -22,19 +25,20 @@ export function Header({ className }: HeaderProps) {
                             prefetch={false}
                             className="flex items-center space-x-2 align-middle h-full dark:text-white"
                         >
-                            {/* <img
-                                src="/img/slovct-logo.png"
+                            <Image
+                                src={logo}
                                 alt="SLOVCT"
                                 height={40}
                                 width={40}
-                            /> */}
-                            SLOLCS 2025 Match Stats
+                            />
+                            SLOLCS 2025
                         </Link>
                     </div>
                     <NavigationBar />
                 </div>
                 <div className="flex flex-1 md:justify-end">
                     <nav className="flex items-center space-x-2">
+                        <LoginButton />
                         <a
                             href={siteConfig.github.link}
                             target="_blank"
