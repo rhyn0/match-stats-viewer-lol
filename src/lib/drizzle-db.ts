@@ -3,6 +3,7 @@ import * as matchesSchema from "@/db/schema/match";
 import * as playersSchema from "@/db/schema/player";
 import * as playerMatchesSchema from "@/db/schema/player-match";
 import * as teamsSchema from "@/db/schema/team";
+import * as usersSchema from "@/db/schema/user";
 import { createClient } from "@libsql/client";
 import { drizzle } from "drizzle-orm/libsql";
 
@@ -16,6 +17,7 @@ const db = drizzle(queryClient, {
         ...playerMatchesSchema,
         ...teamsSchema,
         ...playersSchema,
+        ...usersSchema,
     },
 });
 export default db;
