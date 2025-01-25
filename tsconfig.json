@@ -20,13 +20,13 @@
         ],
         "paths": {
             "@/*": ["./src/*"],
-            "@db/*": ["./db/*"]
+            "@db/*": ["./db/*"],
+            "auth": ["./src/auth"]
         }
     },
     "include": [
         "src/**/*",
         "db/**/*",
-        "types/**/*.d.ts",
         "drizzle.config.ts",
         ".next/types/**/*.ts",
         "testing/**/*.{ts,tsx}"

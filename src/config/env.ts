@@ -10,6 +10,8 @@ const envData = type({
     "+": "delete",
     TURSO_DATABASE_URL: "string.url",
     TURSO_AUTH_TOKEN: "string > 1",
+    GITHUB_OAUTH_ID: "string > 1",
+    GITHUB_OAUTH_SECRET: "string > 1",
 });
 
 export type TEnvData = typeof envData.infer;

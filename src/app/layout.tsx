@@ -3,6 +3,7 @@ import Providers from "@/components/providers";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { siteConfig } from "@/config/site";
 import { Analytics } from "@vercel/analytics/react";
+import { getServerSession } from "auth";
 import { Inter } from "next/font/google";
 
 // type imports
@@ -23,15 +24,16 @@ export const viewport: Viewport = {
     ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const session = await getServerSession();
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={`bg-background ${inter.className}`}>
-                <Providers>
+                <Providers session={session}>
                     <Header />
                     {children}
                     <TailwindIndicator />
