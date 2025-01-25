@@ -8,6 +8,8 @@ import Link from "next/link";
 // TODO<ryan>: handle renavigation to this page as an error redirect from team info page
 // if search param `error` is present, display the error message and then clear the search param
 
+export const dynamic = "force-dynamic";
+
 export default async function RouteComponent() {
     const queryClient = getQueryClient();
     const teams = await queryClient.ensureQueryData(

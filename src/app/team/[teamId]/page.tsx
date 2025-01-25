@@ -5,6 +5,8 @@ import PlayerCard from "@/features/team-viewer/components/player-card";
 import { getQueryClient } from "@/lib/query-client";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 export default async function RouteComponent({
     params,
 }: {

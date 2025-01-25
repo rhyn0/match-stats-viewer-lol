@@ -4,6 +4,8 @@ import TeamStatTable from "@/features/stat-teams/components/table";
 import { getQueryClient } from "@/lib/query-client";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 
+export const dynamic = "force-dynamic";
+
 export default function RouteComponent() {
     const queryClient = getQueryClient();
     queryClient.prefetchQuery(queryListTeamStatsOptions());
