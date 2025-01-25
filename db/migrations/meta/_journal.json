@@ -8,6 +8,13 @@
             "when": 1737617584410,
             "tag": "0000_awesome_night_thrasher",
             "breakpoints": true
+        },
+        {
+            "idx": 1,
+            "version": "6",
+            "when": 1737701793116,
+            "tag": "0001_handy_baron_strucker",
+            "breakpoints": true
         }
     ]
 }

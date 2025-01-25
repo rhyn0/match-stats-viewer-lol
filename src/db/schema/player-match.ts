@@ -3,7 +3,6 @@
 import { playerPositionOptions } from "@/types/league";
 import { relations } from "drizzle-orm";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
-import { champions } from "./champion";
 import { matches } from "./match";
 import { players } from "./player";
 
@@ -13,7 +12,10 @@ export const playerMatches = sqliteTable("player_matches", {
     matchId: integer("match_id").references(() => matches.id),
     rawKDA: text("raw_kda", { length: 10 }).notNull(),
     position: text({ enum: playerPositionOptions }).notNull(),
-    playerChampionId: integer("champion_id").references(() => champions.id),
+    // TODO<ryan>: we should store champion data external to this table
+    // fastest way forward right now is to just store championName
+    // playerChampionId: integer("champion_id").references(() => champions.id),
+    playerChampionName: text("champion_name").notNull(),
     playerKills: integer("player_kills").notNull(),
     playerDeaths: integer("player_deaths").notNull(),
     playerAssists: integer("player_assists").notNull(),
@@ -35,3 +37,5 @@ export const matchRel = relations(playerMatches, ({ one }) => ({
 export const playersMatchRel = relations(players, ({ many }) => ({
     playerMatchesRel: many(playerMatches),
 }));
+
+export type PlayerMatchSelectT = typeof playerMatches.$inferSelect;

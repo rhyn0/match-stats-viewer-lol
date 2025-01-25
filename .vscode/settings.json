@@ -30,7 +30,9 @@
     "testing.alwaysRevealTestOnStateChange": true,
     "testing.automaticallyOpenPeekViewDuringAutoRun": true,
     "testing.automaticallyOpenPeekView": "failureInVisibleDocument",
-    "vitest.rootConfig": "vitest.config.ts",
+    "jest.enable": true,
+    "jest.runMode": "on-save",
+    "jest.jestCommandLine": "pnpm test",
     // editor view settings
     "editor.defaultFormatter": "biomejs.biome",
     "editor.tabSize": 4,
@@ -70,10 +72,12 @@
         ],
         // https://cva.style/docs/getting-started/installation
         [
-            "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"
+            "cva\\(([^)]*)\\)",
+            "[\"'`]([^\"'`]*).*?[\"'`]"
         ],
         [
-            "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"
+            "cx\\(([^)]*)\\)",
+            "(?:'|\"|`)([^']*)(?:'|\"|`)"
         ]
     ],
     // suggested by arktype
