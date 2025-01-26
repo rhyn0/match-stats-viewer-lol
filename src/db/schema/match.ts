@@ -13,14 +13,13 @@ export const matches = sqliteTable("matches_played", {
     redTeam: integer("red_team_id")
         .references(() => teams.id)
         .notNull(),
-    blueWon: integer("blue_win", { mode: "boolean" }).notNull(),
-    gameTimeSeconds: integer("game_time_seconds", { mode: "number" }).notNull(),
-    playDate: integer("match_date", { mode: "timestamp" })
-        .default(sql`CURRENT_TIMESTAMP`)
-        .notNull(),
-    isPlayoffs: integer("is_playoffs", { mode: "boolean" })
-        .notNull()
-        .default(false),
+    // when these columns are null, they mean the match is unplayed.
+    blueWon: integer("blue_win", { mode: "boolean" }),
+    gameTimeSeconds: integer("game_time_seconds", { mode: "number" }),
+    playDate: integer("match_date", { mode: "timestamp" }).default(
+        sql`CURRENT_TIMESTAMP`,
+    ),
+    isPlayoffs: integer("is_playoffs", { mode: "boolean" }).default(false),
 });
 
 export const playerDetailsRel = relations(matches, ({ many }) => ({

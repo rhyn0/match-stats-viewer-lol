@@ -17,11 +17,11 @@ export function calculateTeamStats(teamRecord: TeamStatQueryT): TeamGameDataT {
     );
     const totalGametime =
         teamRecord.matchesForTeamARel.reduce(
-            (acc, match) => acc + match.gameTimeSeconds,
+            (acc, match) => acc + (match.gameTimeSeconds ?? 0),
             0,
         ) +
         teamRecord.matchesForTeamBRel.reduce(
-            (acc, match) => acc + match.gameTimeSeconds,
+            (acc, match) => acc + (match.gameTimeSeconds ?? 0),
             0,
         );
     return {
