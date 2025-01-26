@@ -10,7 +10,7 @@ import { and, eq, inArray, or } from "drizzle-orm";
 
 import type { UploadMatchT } from "../types";
 
-export async function insertSingleMatch(data: UploadMatchT): Promise<boolean> {
+export async function insertSingleMatch(data: UploadMatchT): Promise<void> {
     const session = await getServerSession();
     if (!session) {
         throw new Error("Must be Admin to add game results");
@@ -92,7 +92,6 @@ export async function insertSingleMatch(data: UploadMatchT): Promise<boolean> {
         });
     } catch (e) {
         console.error(e);
-        return false;
+        throw e;
     }
-    return true;
 }

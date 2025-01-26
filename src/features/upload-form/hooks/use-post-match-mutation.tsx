@@ -14,7 +14,7 @@ import type { UploadMatchT } from "../types";
 
 export interface useUploadQueryProps
     extends Omit<
-        UseMutationOptions<boolean, DefaultError, UploadMatchT>,
+        UseMutationOptions<void, DefaultError, UploadMatchT>,
         "mutationFn"
     > {}
 export default function useUploadMutation({
