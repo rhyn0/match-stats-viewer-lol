@@ -13,7 +13,10 @@ import type { Metadata, Viewport } from "next";
 // css import
 import "./global.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+    subsets: ["latin"],
+    variable: "--font-inter",
+});
 const bangers = Bangers({
     weight: "400",
     subsets: ["latin"],
@@ -39,7 +42,7 @@ export default async function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body
-                className={`bg-background ${inter.className} ${bangers.className}`}
+                className={`bg-background ${inter.variable} ${bangers.variable}`}
             >
                 <Providers session={session}>
                     <Header />

@@ -41,6 +41,9 @@
     --radius-sm: calc(var(--radius) - 4px);
 
     --spacing: 0.25rem;
+
+    --font-inter: var(--font-inter);
+    --font-bangers: var(--font-bangers);
 }
 
 @layer base {
