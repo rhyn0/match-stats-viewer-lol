@@ -3,13 +3,18 @@
 import { matches } from "@/db/schema/match";
 import { players } from "@/db/schema/player";
 import { playerMatches } from "@/db/schema/player-match";
-import db from "@/lib/drizzle-db";
-
 import { teams } from "@/db/schema/team";
+import db from "@/lib/drizzle-db";
+import { getServerSession } from "auth";
 import { and, eq, inArray, or } from "drizzle-orm";
+
 import type { UploadMatchT } from "../types";
 
 export async function insertSingleMatch(data: UploadMatchT): Promise<boolean> {
+    const session = await getServerSession();
+    if (!session) {
+        throw new Error("Must be Admin to add game results");
+    }
     try {
         await db.transaction(async (tx) => {
             const teamIds = await db
