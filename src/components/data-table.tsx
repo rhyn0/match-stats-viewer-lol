@@ -150,10 +150,13 @@ export function DataTable<TData, TValue>({
                                             {header.isPlaceholder ? null : (
                                                 <div className="flex flex-col space-y-2">
                                                     <div
-                                                        className={cn({
-                                                            "flex cursor-pointer select-none flex-row gap-2 justify-center":
-                                                                header.column.getCanSort(),
-                                                        })}
+                                                        className={cn(
+                                                            "group/sort",
+                                                            {
+                                                                "flex cursor-pointer select-none flex-row gap-2 justify-center":
+                                                                    header.column.getCanSort(),
+                                                            },
+                                                        )}
                                                         onMouseDown={header.column.getToggleSortingHandler()}
                                                     >
                                                         {flexRender(
@@ -164,6 +167,7 @@ export function DataTable<TData, TValue>({
                                                         )}
                                                         <SortIcon
                                                             sortState={header.column.getIsSorted()}
+                                                            noSortClassName="opacity-0 group-hover/sort:opacity-100 hover:opacity-100"
                                                         />
                                                     </div>
                                                     <Filter
@@ -314,9 +318,12 @@ function PaginationButton({ children, ...props }: PaginationButtonProps) {
     );
 }
 
-function SortIcon({ sortState }: { sortState: false | SortDirection }) {
+function SortIcon({
+    sortState,
+    noSortClassName,
+}: { sortState: false | SortDirection; noSortClassName?: string }) {
     if (!sortState) {
-        return <ChevronDown className="opacity-0 hover:opacity-100" />;
+        return <ChevronDown className={noSortClassName} />;
     }
     if (sortState === "asc") {
         return <ChevronUp />;
