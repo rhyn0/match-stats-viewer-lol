@@ -1,0 +1,12 @@
+import {{camelCase name}}Keys from "./keys";
+
+
+export interface {{properCase name}}ReturnI {
+    id: number;
+}
+
+export const query{{properCase name}}QueryOptions = () =>
+    queryOptions({
+        queryKey: {{camelCase name}}Keys.all,
+        queryFn: queryAllTeams,
+    });

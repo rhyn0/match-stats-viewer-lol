@@ -1,0 +1,21 @@
+import { useQuery } from "@tanstack/react-query";
+import {
+    type {{properCase name}}ReturnI,
+    query{{properCase name}}QueryOptions,
+} from "../api/{{kebabCase name}}";
+
+import type { ExtraQueryOptionsI } from "@/types";
+import type {{camelCase name}}Keys from "../api/keys";
+
+type Key = (typeof {{camelCase name}}Keys)["all"];
+
+export interface use{{properCase name}}QueryProps
+    extends ExtraQueryOptionsI<ListTeamReturnI, Key> {}
+export default function use{{properCase name}}Query({
+    ...options
+}: use{{properCase name}}QueryProps = {}) {
+    return useQuery({
+        ...query{{properCase name}}QueryOptions(),
+        ...options,
+    });
+}
