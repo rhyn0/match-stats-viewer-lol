@@ -1,4 +1,4 @@
-import { TypoH4 } from "@/components/typography/headings";
+import { TypoH2, TypoH3, TypoH4 } from "@/components/typography/headings";
 import banner from "@/public/banner.png";
 import { BarChart2, Users } from "lucide-react";
 import Image from "next/image";
@@ -16,11 +16,11 @@ export default function Home() {
                         alt="League of Legends tournament banner"
                         className="object-cover w-full sm:h-80 opacity-50 object-[0%_35%]"
                     />
-                    <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-6 bg-black/50 ">
-                        <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-yellow-400">
+                    <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-6 bg-black/70 dark:bg-gray-700/60 ">
+                        <TypoH2 className="text-3xl sm:text-4xl mb-4 text-yellow-400 tracking-wide">
                             Welcome to SLOLCS 2025!
-                        </h2>
-                        <TypoH4 className="max-w-2xl text-green-300 dark:text-inherit font-light">
+                        </TypoH2>
+                        <TypoH4 className="max-w-2xl text-green-300 dark:text-inherit tracking-normal">
                             Join the epic battles, showcase your skills, and
                             claim victory in our community-driven League of
                             Legends competition!
@@ -59,9 +59,9 @@ export default function Home() {
                             href={item.href}
                             className="flex items-center justify-between p-4 bg-gray-800 rounded-lg shadow-md hover:bg-gray-700 transition-colors duration-200 text-green-300 dark:text-inherit"
                         >
-                            <span className="text-lg font-semibold">
+                            <TypoH3 className="font-semibold tracking-wide">
                                 {item.title}
-                            </span>
+                            </TypoH3>
                             <item.icon className="w-6 h-6 text-yellow-400" />
                         </Link>
                     ))}
