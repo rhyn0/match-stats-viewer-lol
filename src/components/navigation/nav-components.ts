@@ -14,6 +14,12 @@ const navComponents = {
                 description:
                     "Table view of team statistics across the tournament. Displaying per side win rates and overall trends.",
             },
+            {
+                label: "Champion Statistics",
+                to: "/stats/champion",
+                description:
+                    "Table view of champion statistics like ban rate and presence.",
+            },
         ],
     },
     information: {
