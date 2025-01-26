@@ -3,6 +3,7 @@ import Providers from "@/components/providers";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { siteConfig } from "@/config/site";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { getServerSession } from "auth";
 import { Bangers, Inter } from "next/font/google";
 
@@ -46,6 +47,7 @@ export default async function RootLayout({
                     <TailwindIndicator />
                 </Providers>
                 <Analytics />
+                <SpeedInsights />
             </body>
         </html>
     );
