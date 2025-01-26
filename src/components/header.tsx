@@ -4,9 +4,7 @@ import { siteConfig } from "@/config/site";
 import { Icons } from "@/icons";
 import { cn } from "@/lib/cn";
 import { Inter } from "next/font/google";
-import Image from "next/image";
-import Link from "next/link";
-import logo from "../public/logo.png";
+import HomeLink from "./home";
 import LoginButton from "./login-button";
 import { ThemePicker } from "./theme-picker";
 
@@ -28,17 +26,7 @@ export function Header({ className }: HeaderProps) {
             <div className="w-full mx-auto flex items-center justify-between px-4">
                 {/* Left Section: Logo and Navigation */}
                 <div className="flex items-center space-x-8">
-                    <Link
-                        href="/"
-                        scroll={false}
-                        prefetch={false}
-                        className="flex items-center space-x-2 dark:text-white"
-                    >
-                        <Image src={logo} alt="SLOVCT" height={40} width={40} />
-                        <span className="text-lg font-semibold">
-                            SLOLCS 2025
-                        </span>
-                    </Link>
+                    <HomeLink />
                     <NavigationBar />
                 </div>
 
