@@ -25,7 +25,7 @@ export function Header({ className }: HeaderProps) {
                 inter.className,
             )}
         >
-            <div className="container mx-auto flex items-center justify-between px-4">
+            <div className="w-full mx-auto flex items-center justify-between px-4">
                 {/* Left Section: Logo and Navigation */}
                 <div className="flex items-center space-x-8">
                     <Link

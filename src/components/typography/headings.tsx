@@ -44,13 +44,13 @@ export function TypoH3({ className, children }: HeadingProps) {
 
 export function TypoH4({ className, children }: HeadingProps) {
     return (
-        <h3
+        <h4
             className={cn(
                 "scroll-m-20 text-xl font-semibold tracking-tight",
                 className,
             )}
         >
             {children}
-        </h3>
+        </h4>
     );
 }
