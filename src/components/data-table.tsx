@@ -151,7 +151,7 @@ export function DataTable<TData, TValue>({
                                                 <div className="flex flex-col space-y-2">
                                                     <div
                                                         className={cn({
-                                                            "flex cursor-pointer select-none flex-row justify-evenly":
+                                                            "flex cursor-pointer select-none flex-row gap-2 justify-center":
                                                                 header.column.getCanSort(),
                                                         })}
                                                         onMouseDown={header.column.getToggleSortingHandler()}
@@ -316,7 +316,7 @@ function PaginationButton({ children, ...props }: PaginationButtonProps) {
 
 function SortIcon({ sortState }: { sortState: false | SortDirection }) {
     if (!sortState) {
-        return null;
+        return <ChevronDown className="opacity-0 hover:opacity-100" />;
     }
     if (sortState === "asc") {
         return <ChevronUp />;
