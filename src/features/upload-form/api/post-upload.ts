@@ -6,7 +6,7 @@ import { playerMatches } from "@/db/schema/player-match";
 import { teams } from "@/db/schema/team";
 import db from "@/lib/drizzle-db";
 import { getServerSession } from "auth";
-import { and, eq, inArray, or } from "drizzle-orm";
+import { and, eq, or } from "drizzle-orm";
 
 import type { UploadMatchT } from "../types";
 
@@ -16,39 +16,37 @@ export async function insertSingleMatch(data: UploadMatchT): Promise<void> {
         throw new Error("Must be Admin to add game results");
     }
     try {
+        const [{ id: blueId }] = await db
+            .select({
+                id: teams.id,
+            })
+            .from(teams)
+            .where(
+                or(
+                    eq(teams.defaultName, data.matchRecord.blueTeamName),
+                    eq(teams.teamName, data.matchRecord.blueTeamName),
+                ),
+            );
+        const [{ id: redId }] = await db
+            .select({
+                id: teams.id,
+            })
+            .from(teams)
+            .where(
+                or(
+                    eq(teams.defaultName, data.matchRecord.redTeamName),
+                    eq(teams.teamName, data.matchRecord.redTeamName),
+                ),
+            );
+        console.log(
+            "Starting transaction for match between (blue,red) : ",
+            blueId,
+            redId,
+        );
+        if (typeof blueId === "undefined" || typeof redId === "undefined") {
+            throw new Error("Invalid team names");
+        }
         await db.transaction(async (tx) => {
-            const teamIds = await db
-                .select({
-                    id: teams.id,
-                    name: teams.teamName,
-                    defaultName: teams.defaultName,
-                })
-                .from(teams)
-                .where(
-                    or(
-                        inArray(teams.defaultName, [
-                            data.matchRecord.blueTeamName,
-                            data.matchRecord.redTeamName,
-                        ]),
-                        inArray(teams.teamName, [
-                            data.matchRecord.blueTeamName,
-                            data.matchRecord.redTeamName,
-                        ]),
-                    ),
-                );
-            const blueId = teamIds.find(
-                (team) =>
-                    data.matchRecord.blueTeamName === team.name ||
-                    data.matchRecord.blueTeamName === team.defaultName,
-            )?.id;
-            const redId = teamIds.find(
-                (team) =>
-                    data.matchRecord.redTeamName === team.name ||
-                    data.matchRecord.redTeamName === team.defaultName,
-            )?.id;
-            if (typeof blueId === "undefined" || typeof redId === "undefined") {
-                throw new Error("Invalid team names");
-            }
             const [{ matchId }] = await tx
                 .update(matches)
                 .set({
@@ -64,6 +62,10 @@ export async function insertSingleMatch(data: UploadMatchT): Promise<void> {
                     ),
                 )
                 .returning({ matchId: matches.id });
+            console.log(
+                "Creating player performances for match id - ",
+                matchId,
+            );
             for (const {
                 playerName,
                 position,
