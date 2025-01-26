@@ -47,7 +47,7 @@ export async function insertSingleMatch(data: UploadMatchT): Promise<void> {
             throw new Error("Invalid team names");
         }
         await db.transaction(async (tx) => {
-            const [{ matchId }] = await tx
+            const result = await tx
                 .update(matches)
                 .set({
                     blueWon: data.matchRecord.blueWon,
@@ -62,10 +62,8 @@ export async function insertSingleMatch(data: UploadMatchT): Promise<void> {
                     ),
                 )
                 .returning({ matchId: matches.id });
-            console.log(
-                "Creating player performances for match id - ",
-                matchId,
-            );
+            console.log("Creating player performances for match id - ", result);
+            const matchId = result[0].matchId;
             for (const {
                 playerName,
                 position,
