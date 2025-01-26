@@ -3,6 +3,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { Icons } from "@/icons";
 import { cn } from "@/lib/cn";
+import { Inter } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../public/logo.png";
@@ -13,9 +14,17 @@ interface HeaderProps {
     className?: string;
 }
 
+const inter = Inter({ subsets: ["latin"] });
+
 export function Header({ className }: HeaderProps) {
     return (
-        <header className={cn("bg-secondary align-middle", className)}>
+        <header
+            className={cn(
+                "bg-secondary align-middle",
+                className,
+                inter.className,
+            )}
+        >
             <div className="pr-4 flex">
                 <div className="flex space-x-8 md:justify-start">
                     <div>

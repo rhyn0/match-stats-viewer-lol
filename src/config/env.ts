@@ -1,10 +1,13 @@
 // import "server-only";
 import { type } from "arktype";
-// import { config } from "dotenv";
+import { config } from "dotenv";
 
-// const path = process.env.NODE_ENV === "production" ? ".env" : ".env.local";
+const path =
+    process.env.NODE_ENV === "production"
+        ? ".env.production"
+        : ".env.development.local";
 // const myObject = {};
-// config({ path, processEnv: myObject });
+config({ path });
 
 const envData = type({
     "+": "delete",

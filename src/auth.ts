@@ -25,8 +25,11 @@ const options: AuthOptions = {
     ],
     session: { strategy: "jwt" },
     callbacks: {
-        signIn: async ({ user }) => {
-            const isAdmin = user.email ? isAdminUser(user.email) : false;
+        signIn: async ({ user, ...rest }) => {
+            console.log("🚀 ~ signIn: ~ user, ...rest:", user, rest);
+
+            const isAdmin = user.email ? await isAdminUser(user.email) : false;
+            console.log("🚀 ~ signIn: ~ isAdmin:", isAdmin);
             if (isAdmin) return true;
             return "/unauthorized";
         },

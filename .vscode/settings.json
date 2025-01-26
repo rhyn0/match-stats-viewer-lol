@@ -89,4 +89,10 @@
     "typescript.preferences.autoImportSpecifierExcludeRegexes": [
         "^(node:)?os$"
     ],
+    "workbench.editor.customLabels.patterns": {
+        "**/app/**/page.tsx": "${dirname} - Page",
+        "**/app/**/layout.tsx": "${dirname} - Layout",
+        "**/app/**/loading.tsx": "${dirname} - Loading",
+        "**/app/**/route.ts": "${dirname} - Route"
+    }
 }

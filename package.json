@@ -72,6 +72,7 @@
         "@types/node": "^22.10.7",
         "@types/react": "^19.0.7",
         "@types/react-dom": "^19.0.3",
+        "dotenv": "^16.4.7",
         "drizzle-kit": "^0.30.2",
         "drizzle-seed": "^0.3.0",
         "husky": "^9.1.7",
