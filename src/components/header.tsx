@@ -26,7 +26,6 @@ export function Header({ className }: HeaderProps) {
             )}
         >
             <div className="container mx-auto flex items-center justify-between px-4">
-                
                 {/* Left Section: Logo and Navigation */}
                 <div className="flex items-center space-x-8">
                     <Link
@@ -35,13 +34,10 @@ export function Header({ className }: HeaderProps) {
                         prefetch={false}
                         className="flex items-center space-x-2 dark:text-white"
                     >
-                        <Image
-                            src={logo}
-                            alt="SLOVCT"
-                            height={40}
-                            width={40}
-                        />
-                        <span className="text-lg font-semibold">SLOLCS 2025</span>
+                        <Image src={logo} alt="SLOVCT" height={40} width={40} />
+                        <span className="text-lg font-semibold">
+                            SLOLCS 2025
+                        </span>
                     </Link>
                     <NavigationBar />
                 </div>

@@ -1,9 +1,9 @@
 "use server";
 
 import { matches } from "@/db/schema/match";
-import { players } from "@/db/schema/player";
 import { playerMatches } from "@/db/schema/player-match";
 import { teams } from "@/db/schema/team";
+import { selectOrInsertPlayer } from "@/lib/crud/players";
 import db from "@/lib/drizzle-db";
 import { getServerSession } from "auth";
 import { and, eq, or } from "drizzle-orm";
@@ -15,6 +15,7 @@ export async function insertSingleMatch(data: UploadMatchT): Promise<void> {
     if (!session) {
         throw new Error("Must be Admin to add game results");
     }
+    db.select();
     try {
         const [{ id: blueId }] = await db
             .select({
@@ -70,16 +71,11 @@ export async function insertSingleMatch(data: UploadMatchT): Promise<void> {
                 championName,
                 kda,
             } of data.playerMatchRecords) {
-                const [{ playerId }] = await tx
-                    .insert(players)
-                    // any player we insert is not on a team, probably a sub
-                    .values({
-                        name: playerName.slice(0, playerName.indexOf("#")),
-                        summonerName: playerName,
-                        designatedPosition: position,
-                    })
-                    .onConflictDoNothing({ target: players.name })
-                    .returning({ playerId: players.id });
+                const [{ id: playerId }] = await selectOrInsertPlayer(tx, {
+                    name: playerName.slice(0, playerName.indexOf("#")),
+                    summonerName: playerName,
+                    designatedPosition: position,
+                });
                 await tx.insert(playerMatches).values({
                     playerId,
                     matchId,

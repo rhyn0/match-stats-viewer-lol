@@ -60,7 +60,10 @@ function MainNavigationBar() {
                             <NavigationMenuContent>
                                 <ul className={ulClasses}>
                                     {navigation.links.map((link) => (
-                                        <li key={link.label} className="relative">
+                                        <li
+                                            key={link.label}
+                                            className="relative"
+                                        >
                                             <NavigationLink
                                                 href={link.to}
                                                 prefetch={false}
@@ -80,7 +83,7 @@ function MainNavigationBar() {
                                                 <TypoP className="text-sm text-gray-700 dark:text-gray-300">
                                                     {link.description}
                                                 </TypoP>
-                                                <div className="absolute top-0 left-4 w-0 h-0 border-l-4 border-l-transparent border-r-4 border-r-transparent border-b-4 border-b-white dark:border-b-gray-800"></div>
+                                                <div className="absolute top-0 left-4 w-0 h-0 border-l-4 border-l-transparent border-r-4 border-r-transparent border-b-4 border-b-white dark:border-b-gray-800" />
                                             </div>
                                         </li>
                                     ))}

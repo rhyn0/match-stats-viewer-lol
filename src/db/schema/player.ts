@@ -22,7 +22,9 @@ export const players = sqliteTable(
             enum: playerPositionOptions,
         }).notNull(),
     },
-    (players) => [uniqueIndex("player_name_uniq_idx").on(players.name)],
+    (players) => [
+        uniqueIndex("player_summoner_name_uniq_idx").on(players.summonerName),
+    ],
 );
 export const teamPlayersRel = relations(teams, ({ many }) => ({
     teamPlayersRel: many(players),
@@ -36,3 +38,4 @@ export const playerTeamRel = relations(players, ({ one }) => ({
 }));
 
 export type PlayerSelectT = typeof players.$inferSelect;
+export type PlayerInsertT = typeof players.$inferInsert;
