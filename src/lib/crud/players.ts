@@ -27,7 +27,7 @@ export async function selectOrInsertPlayer(db: Db, values: PlayerInsertT) {
     const insertResult = await insertPlayerConflictNothing(db, values);
     console.log("After inserting got result", insertResult);
     // @ts-expect-error - have to figure out if it is a weird tyupe
-    if (insertResult[0]?.status) {
+    if (insertResult.length === 0 || insertResult[0]?.status) {
         // conflict occurred and it doesn't return existing column
         return await selectPlayerBySummonerName(db, values.summonerName);
     }
