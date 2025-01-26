@@ -1,55 +1,55 @@
 {
-  "version": "7",
-  "dialect": "sqlite",
-  "entries": [
-    {
-      "idx": 0,
-      "version": "6",
-      "when": 1737617584410,
-      "tag": "0000_awesome_night_thrasher",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "6",
-      "when": 1737701793116,
-      "tag": "0001_handy_baron_strucker",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "6",
-      "when": 1737872749898,
-      "tag": "0002_smiling_proudstar",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "6",
-      "when": 1737872876071,
-      "tag": "0003_secret_sunset_bain",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "6",
-      "when": 1737876244488,
-      "tag": "0004_round_lake",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "6",
-      "when": 1737926729490,
-      "tag": "0005_woozy_harry_osborn",
-      "breakpoints": true
-    },
-    {
-      "idx": 6,
-      "version": "6",
-      "when": 1737928959196,
-      "tag": "0006_steady_greymalkin",
-      "breakpoints": true
-    }
-  ]
+    "version": "7",
+    "dialect": "sqlite",
+    "entries": [
+        {
+            "idx": 0,
+            "version": "6",
+            "when": 1737617584410,
+            "tag": "0000_awesome_night_thrasher",
+            "breakpoints": true
+        },
+        {
+            "idx": 1,
+            "version": "6",
+            "when": 1737701793116,
+            "tag": "0001_handy_baron_strucker",
+            "breakpoints": true
+        },
+        {
+            "idx": 2,
+            "version": "6",
+            "when": 1737872749898,
+            "tag": "0002_smiling_proudstar",
+            "breakpoints": true
+        },
+        {
+            "idx": 3,
+            "version": "6",
+            "when": 1737872876071,
+            "tag": "0003_secret_sunset_bain",
+            "breakpoints": true
+        },
+        {
+            "idx": 4,
+            "version": "6",
+            "when": 1737876244488,
+            "tag": "0004_round_lake",
+            "breakpoints": true
+        },
+        {
+            "idx": 5,
+            "version": "6",
+            "when": 1737926729490,
+            "tag": "0005_woozy_harry_osborn",
+            "breakpoints": true
+        },
+        {
+            "idx": 6,
+            "version": "6",
+            "when": 1737928959196,
+            "tag": "0006_steady_greymalkin",
+            "breakpoints": true
+        }
+    ]
 }
