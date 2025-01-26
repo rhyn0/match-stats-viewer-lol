@@ -5,13 +5,19 @@ import type { TeamGameDataT, TeamStatQueryT } from "../types";
  * @param teamRecord Database select query for a team
  */
 export function calculateTeamStats(teamRecord: TeamStatQueryT): TeamGameDataT {
-    const blueGamesPlayed = teamRecord.matchesForTeamARel.length;
-    const redGamesPlayed = teamRecord.matchesForTeamBRel.length;
-    const blueWins = teamRecord.matchesForTeamARel.reduce(
+    const blueMatches = teamRecord.matchesForTeamARel.filter(
+        (match) => match.blueWon !== null,
+    );
+    const blueGamesPlayed = blueMatches.length;
+    const redMatches = teamRecord.matchesForTeamBRel.filter(
+        (match) => match.blueWon !== null,
+    );
+    const redGamesPlayed = redMatches.length;
+    const blueWins = blueMatches.reduce(
         (acc, match) => (match.blueWon ? acc + 1 : acc),
         0,
     );
-    const redWins = teamRecord.matchesForTeamBRel.reduce(
+    const redWins = redMatches.reduce(
         (acc, match) => (match.blueWon ? acc : acc + 1),
         0,
     );
