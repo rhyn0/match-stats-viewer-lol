@@ -54,6 +54,8 @@ export async function insertSingleMatch(data: UploadMatchT): Promise<void> {
                 .set({
                     blueWon: data.matchRecord.blueWon,
                     playDate: data.matchRecord.playDate,
+                    gameTimeSeconds: data.matchRecord.gameTimeSeconds,
+                    isPlayoffs: data.isPlayoffs,
                 })
                 .where(
                     and(
