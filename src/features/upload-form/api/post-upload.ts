@@ -8,6 +8,7 @@ import db from "@/lib/drizzle-db";
 import { getServerSession } from "auth";
 import { and, eq, or } from "drizzle-orm";
 
+import { matchBans } from "@/db/schema/match-bans";
 import type { UploadMatchT } from "../types";
 
 export async function insertSingleMatch(data: UploadMatchT): Promise<void> {
@@ -15,7 +16,6 @@ export async function insertSingleMatch(data: UploadMatchT): Promise<void> {
     if (!session) {
         throw new Error("Must be Admin to add game results");
     }
-    db.select();
     try {
         const [{ id: blueId }] = await db
             .select({
@@ -65,6 +65,21 @@ export async function insertSingleMatch(data: UploadMatchT): Promise<void> {
                 .returning({ matchId: matches.id });
             console.log("Creating player performances for match id - ", result);
             const matchId = result[0].matchId;
+            await tx.insert(matchBans).values({
+                matchId,
+                // blue
+                blueBan1: data.blueBans[1],
+                blueBan2: data.blueBans[2],
+                blueBan3: data.blueBans[3],
+                blueBan4: data.blueBans[4],
+                blueBan5: data.blueBans[5],
+                // red
+                redBan1: data.redBans[1],
+                redBan2: data.redBans[2],
+                redBan3: data.redBans[3],
+                redBan4: data.redBans[4],
+                redBan5: data.redBans[5],
+            });
             for (const {
                 playerName,
                 position,
