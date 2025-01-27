@@ -9,8 +9,10 @@ export async function GET() {
     const arrayPresence = presence.map((p) => ({
         ...p,
         picks: p.picks.split(","),
-        blueBans: p.blueBans.split(","),
-        redBans: p.redBans.split(","),
+        // bans can be null due to 'empty' ban.
+        // filter these results to avoid them
+        blueBans: p.blueBans.split(",").filter((b) => b.length > 0),
+        redBans: p.redBans.split(",").filter((b) => b.length > 0),
     }));
 
     return Response.json({
