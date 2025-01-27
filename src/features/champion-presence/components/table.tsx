@@ -25,7 +25,7 @@ export default function ChampionPresenceTable({
             // @ts-ignore
             columns={columns}
             data={data}
-            pageSizeChangingEnabled={false}
+            pageSizeChangingEnabled
             pagination={tablePagination}
             onPaginationChange={setTablePagination}
             columnPinning={columnPinning}
