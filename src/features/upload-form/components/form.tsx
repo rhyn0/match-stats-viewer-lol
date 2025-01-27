@@ -43,21 +43,37 @@ import {
 
 export interface UploadFormProps extends useUploadQueryProps {}
 
+const defaultValues = {
+    isPlayoffs: false,
+    matchRecord: {
+        blueWon: false,
+    },
+    playerMatchRecords: Array(10)
+        .fill({})
+        .map((_p, idx) => ({
+            position: playerPositionOptions.at(idx % 5),
+        })),
+    blueBans: {
+        1: "",
+        2: "",
+        3: "",
+        4: "",
+        5: "",
+    },
+    redBans: {
+        1: "",
+        2: "",
+        3: "",
+        4: "",
+        5: "",
+    },
+};
+
 export function UploadForm({ onSuccess, ...options }: UploadFormProps) {
     // 1. Define your form.
     const form = useForm<InputUploadMatchT>({
         resolver: arktypeResolver(InputUploadMatchArk),
-        defaultValues: {
-            isPlayoffs: false,
-            matchRecord: {
-                blueWon: false,
-            },
-            playerMatchRecords: Array(10)
-                .fill({})
-                .map((_p, idx) => ({
-                    position: playerPositionOptions.at(idx % 5),
-                })),
-        },
+        defaultValues,
     });
     const uploadMutation = useUploadMutation({
         ...options,
@@ -261,6 +277,62 @@ export function UploadForm({ onSuccess, ...options }: UploadFormProps) {
                     <span className="text-4xl text-blue-600">Blue</span>{" "}
                     <span className="text-4xl text-red-600">Red</span>
                 </div>
+                <section className="grid lg:grid-cols-2 grid-flow-col grid-rows-5 gap-4">
+                    {Array(5)
+                        .fill(null)
+                        .map((_, idx) => (
+                            <FormField
+                                // biome-ignore lint/suspicious/noArrayIndexKey:
+                                key={`blue-${idx}`}
+                                control={form.control}
+                                name={`blueBans.${(idx + 1) as 1 | 2 | 3 | 4 | 5}`}
+                                render={({ field }) => (
+                                    <div className="flex items-center space-x-2 justify-self-start">
+                                        <FormItem>
+                                            <FormLabel>
+                                                Blue Ban {idx + 1}
+                                            </FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    placeholder="Champion X"
+                                                    {...field}
+                                                    value={field.value ?? ""}
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    </div>
+                                )}
+                            />
+                        ))}
+                    {Array(5)
+                        .fill(null)
+                        .map((_, idx) => (
+                            <FormField
+                                // biome-ignore lint/suspicious/noArrayIndexKey:
+                                key={`red-${idx}`}
+                                control={form.control}
+                                name={`redBans.${(idx + 1) as 1 | 2 | 3 | 4 | 5}`}
+                                render={({ field }) => (
+                                    <div className="flex items-center space-x-2 justify-self-end">
+                                        <FormItem>
+                                            <FormLabel>
+                                                Red Ban {idx + 1}
+                                            </FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    placeholder="Champion Y"
+                                                    {...field}
+                                                    value={field.value ?? ""}
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    </div>
+                                )}
+                            />
+                        ))}
+                </section>
                 <section className="grid lg:grid-cols-2 grid-flow-col grid-rows-5 gap-4">
                     {playerMatchFields.fields.map((field, index) => (
                         <div

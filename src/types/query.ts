@@ -6,9 +6,12 @@ import type {
     UseQueryResult,
 } from "@tanstack/react-query";
 
-export interface ExtraQueryOptionsI<TFnData, TQueryKey extends QueryKey>
-    extends Omit<
-        UseQueryOptions<TFnData, DefaultError, TFnData, TQueryKey>,
+export interface ExtraQueryOptionsI<
+    TFnData,
+    TQueryKey extends QueryKey,
+    TData = TFnData,
+> extends Omit<
+        UseQueryOptions<TFnData, DefaultError, TData, TQueryKey>,
         "queryKey" | "queryFn"
     > {}
 

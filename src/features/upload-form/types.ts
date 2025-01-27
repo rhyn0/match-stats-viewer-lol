@@ -32,10 +32,21 @@ export const MatchRecordArk = type({
 });
 export type MatchRecordT = typeof MatchRecordArk.infer;
 
+export const BansArk = type({
+    1: "string",
+    2: "string",
+    3: "string",
+    4: "string",
+    5: "string",
+});
+export type BansT = typeof BansArk.infer;
+
 export const UploadMatchArk = type({
     matchRecord: MatchRecordArk,
     isPlayoffs: "boolean",
     playerMatchRecords: PlayerMatchRecordArk.array(),
+    blueBans: BansArk,
+    redBans: BansArk,
 });
 export type UploadMatchT = typeof UploadMatchArk.infer;
 

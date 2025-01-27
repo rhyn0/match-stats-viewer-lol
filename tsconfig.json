@@ -28,6 +28,7 @@
         "src/**/*",
         "db/**/*",
         "drizzle.config.ts",
+        "scripts/**/*.ts",
         ".next/types/**/*.ts",
         "testing/**/*.{ts,tsx}"
     ],
