@@ -165,10 +165,12 @@ export function DataTable<TData, TValue>({
                                                                 .header,
                                                             header.getContext(),
                                                         )}
-                                                        <SortIcon
-                                                            sortState={header.column.getIsSorted()}
-                                                            noSortClassName="opacity-0 group-hover/sort:opacity-100 hover:opacity-100"
-                                                        />
+                                                        {header.column.getCanSort() ? (
+                                                            <SortIcon
+                                                                sortState={header.column.getIsSorted()}
+                                                                noSortClassName="opacity-0 group-hover/sort:opacity-100 hover:opacity-100"
+                                                            />
+                                                        ) : null}
                                                     </div>
                                                     <Filter
                                                         column={header.column}
