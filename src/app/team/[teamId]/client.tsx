@@ -2,27 +2,22 @@
 
 import { TypoH1 } from "@/components/typography/headings";
 import { Button } from "@/components/ui/button";
-import { Spinner } from "@/components/ui/spinner";
-import { queryTeamByIdQueryOptions } from "@/features/team-viewer/api/get-team";
 import PlayerCard from "@/features/team-viewer/components/player-card";
-import { useQuery } from "@tanstack/react-query";
+import useTeamIdQuery from "@/features/team-viewer/hooks/use-get-team";
 import Link from "next/link";
 
 export default function TeamIdCardClient({ teamId }: { teamId: number }) {
-    const teamDataQuery = useQuery(queryTeamByIdQueryOptions(teamId));
-    if (teamDataQuery.isPending) {
-        return <Spinner size="lg" />;
-    }
+    const teamDataQuery = useTeamIdQuery({ teamId });
     if (teamDataQuery.isError) {
         return (
             <div>
                 An unexpected error occurred
-                <span>{teamDataQuery.error.message}</span>
+                <span>{teamDataQuery.error?.message}</span>
             </div>
         );
     }
     return (
-        <main className="flex min-h-screen flex-col items-center justify-center p-8 space-y-10">
+        <>
             <TypoH1 className="text-4xl font-bold mb-8">
                 Team :{" "}
                 {teamDataQuery.data.teamName ?? teamDataQuery.data.defaultName}
@@ -44,6 +39,6 @@ export default function TeamIdCardClient({ teamId }: { teamId: number }) {
                     </PlayerCard>
                 ))}
             </div>
-        </main>
+        </>
     );
 }
