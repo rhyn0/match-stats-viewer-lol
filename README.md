@@ -4,26 +4,42 @@ Similar to my [Valorant one](https://github.com/rhyn0/match-stats-viewer) but fo
 
 ## Getting Started 
 
-First, run the development server:
+Get the database setup to have something to view.
+
+> [!IMPORTANT]
+> The auto [seeding](https://orm.drizzle.team/docs/seed-overview) of [Drizzle Kit](https://orm.drizzle.team/kit-docs)  won't generate our data model exactly. But good enough to create fake views.
+
+```shellscript
+cd docker
+docker compose up --build -d
+# this starts a libsql server at http://localhost:8080
+# I love NextJS .env files :)
+cd ..
+cp .env.template .env.development.local
+# Fill in the 'TURSO_DATABASE_URL' value with http://localhost:8080
+$EDITOR .env.development.local
+# Seed values into your local database
+pnpx tsx ./scripts/seed-db.ts
+```
+
+Finally, run the development server:
 
 ```bash
 pnpm dev
 ```
 
-Then, configure access to a LibSQL database. For the ease of startup a `docker-compose.yaml` is provided in the `./docker` folder.
-Then additionally use [Drizzle Kit](https://orm.drizzle.team/kit-docs) to initialize the schema. To start the dockerized database:
+> [!NOTE]
+> It should not be necessary to fill out anything else in  the dotenv.
+The Auth specific variables are not required to run, and any auth specific code (`middleware.ts`) can be commented out, if need be.
 
-```bash
-docker compose -f docker/docker-compose.yaml up --build --detach
-# test with Turso CLI that you can connect
-# turso db shell http://localhost:8080
-# if using nvm
-# nvm use
+<details>
+    <summary><strong>Common Errors</strong></summary>
 
-# setup the .env.local file
-# cp .env.template .env.local
-pnpm push
-```
+    1. Invalid process.env Data
+        - I apologize in advance but the .env files are named a **VERY** specific value. See `./src/config/env.ts` for that.
+    1. ERR_SSL_PACKET_LENGTH_TOO_LONG
+        - Make sure your dtabase URL uses `http` transport not `libsql`.
+</details>
 
 ## Packages Used
 
@@ -31,7 +47,6 @@ This project uses a LibSQL database to store the data and model the data.
 
 To connect I use:
 
--   [Turso](https://docs.turso.tech/sdk/ts/quickstart)
 -   [Drizzle](https://orm.drizzle.team/)
 
 UI components by:
