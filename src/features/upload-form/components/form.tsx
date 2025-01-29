@@ -30,23 +30,23 @@ import { playerPositionOptions } from "@/types";
 import { arktypeResolver } from "@hookform/resolvers/arktype";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
-import { useFieldArray, useForm } from "react-hook-form";
+import { type DeepPartial, useFieldArray, useForm } from "react-hook-form";
 import useUploadMutation, {
     type useUploadQueryProps,
 } from "../hooks/use-post-match-mutation";
 import { parseKda } from "../lib/parse-kda";
+import { parseSecondsFromTimeString } from "../lib/parse-seconds-from-string";
 import {
     InputUploadMatchArk,
     type InputUploadMatchT,
     type UploadMatchT,
 } from "../types";
 
-export interface UploadFormProps extends useUploadQueryProps {}
-
-const defaultValues = {
+const defaultValues: DeepPartial<InputUploadMatchT> = {
     isPlayoffs: false,
     matchRecord: {
         blueWon: false,
+        gameTimeSeconds: "",
     },
     playerMatchRecords: Array(10)
         .fill({})
@@ -68,9 +68,9 @@ const defaultValues = {
         5: "",
     },
 };
+export interface UploadFormProps extends useUploadQueryProps {}
 
 export function UploadForm({ onSuccess, ...options }: UploadFormProps) {
-    // 1. Define your form.
     const form = useForm<InputUploadMatchT>({
         resolver: arktypeResolver(InputUploadMatchArk),
         defaultValues,
@@ -82,7 +82,6 @@ export function UploadForm({ onSuccess, ...options }: UploadFormProps) {
             onSuccess?.(...args);
         },
     });
-
     const playerMatchFields = useFieldArray({
         control: form.control,
         name: "playerMatchRecords",
@@ -90,6 +89,12 @@ export function UploadForm({ onSuccess, ...options }: UploadFormProps) {
     const onSubmit = (values: InputUploadMatchT) => {
         const parsed: UploadMatchT = {
             ...values,
+            matchRecord: {
+                ...values.matchRecord,
+                gameTimeSeconds: parseSecondsFromTimeString(
+                    values.matchRecord.gameTimeSeconds,
+                ),
+            },
             playerMatchRecords: values.playerMatchRecords.map((rec) => ({
                 ...rec,
                 kda: parseKda(rec.kda.raw),
@@ -171,25 +176,11 @@ export function UploadForm({ onSuccess, ...options }: UploadFormProps) {
                             render={({ field }) => (
                                 <div className="flex items-center space-x-2">
                                     <FormItem>
-                                        <FormLabel>
-                                            Game Time in Seconds
-                                        </FormLabel>
+                                        <FormLabel>Game Time</FormLabel>
                                         <FormControl>
-                                            <Input
-                                                {...field}
-                                                type="number"
-                                                value={field.value ?? 0}
-                                                onChange={(e) => {
-                                                    const val = Number.parseInt(
-                                                        e.target.value,
-                                                    );
-                                                    field.onChange(
-                                                        Number.isNaN(val)
-                                                            ? 0
-                                                            : val,
-                                                    );
-                                                }}
-                                            />
+                                            <div>
+                                                <Input {...field} />
+                                            </div>
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
