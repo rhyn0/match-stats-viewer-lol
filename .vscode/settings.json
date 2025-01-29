@@ -40,6 +40,16 @@
     "editor.formatOnType": false,
     "inlineFold.regex": "(class|className)=[`'{\"]([^`'\"}]{30,})[`'\"}]",
     "inlineFold.maskChar": "⌨",
+    "inlineFold.regexFlags": "g",
+    "inlineFold.regexGroup": 2,
+    "inlineFold.unfoldedOpacity": 0.6,
+    "inlineFold.maskColor": "#000",
+    "inlineFold.supportedLanguages": [
+        "javascriptreact",
+        "typescriptreact"
+    ],
+    "inlineFold.unfoldOnLineSelect": true,
+    "inlineFold.autoFold": true,
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -94,5 +104,5 @@
         "**/app/**/layout.tsx": "${dirname} - Layout",
         "**/app/**/loading.tsx": "${dirname} - Loading",
         "**/app/**/route.ts": "${dirname} - Route"
-    }
+    },
 }
