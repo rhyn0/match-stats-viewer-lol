@@ -52,6 +52,10 @@ export type UploadMatchT = typeof UploadMatchArk.infer;
 
 export const InputUploadMatchArk = type({
     "...": UploadMatchArk.omit("playerMatchRecords"),
+    matchRecord: {
+        "...": UploadMatchArk.get("matchRecord"),
+        gameTimeSeconds: /^\d{1,3}:\d{2}/,
+    },
     playerMatchRecords: InputPlayerMatchRecordArk.array(),
 });
 export type InputUploadMatchT = typeof InputUploadMatchArk.infer;
