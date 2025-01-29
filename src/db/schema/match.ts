@@ -20,6 +20,10 @@ export const matches = sqliteTable("matches_played", {
         sql`CURRENT_TIMESTAMP`,
     ),
     isPlayoffs: integer("is_playoffs", { mode: "boolean" }).default(false),
+    gameWeek: integer("game_week")
+        .notNull() // can never be null, playoffs will still have "weeks"
+        // set a default on it for the migration
+        .default(1), // TODO<ryan>: remove this default
 });
 
 export const playerDetailsRel = relations(matches, ({ many }) => ({

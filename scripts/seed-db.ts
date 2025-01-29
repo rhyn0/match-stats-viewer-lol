@@ -33,6 +33,7 @@ async function main() {
         matches: {
             columns: {
                 gameTimeSeconds: f.int({ minValue: 1800, maxValue: 3600 }),
+                gameWeek: f.int({ minValue: 1, maxValue: 4 }),
             },
             with: {
                 matchBans: 1,

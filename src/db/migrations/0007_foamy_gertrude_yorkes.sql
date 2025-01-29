@@ -1,0 +1,1 @@
+ALTER TABLE `matches_played` ADD `game_week` integer DEFAULT 1 NOT NULL;
