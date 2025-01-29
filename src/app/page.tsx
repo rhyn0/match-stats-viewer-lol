@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Home() {
     return (
         <div>
-            <main className="container mx-auto px-4 py-8">
+            <main className="container mx-auto px-4 py-8 font-bangers">
                 <section className="relative rounded-lg overflow-hidden shadow-2xl mb-12">
                     <Image
                         src={banner}
