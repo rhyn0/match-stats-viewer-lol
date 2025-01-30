@@ -16,7 +16,6 @@ export async function listSchedule(): Promise<ListScheduleReturnT> {
     }
     const { data } = await response.json();
     const parsed = ArrayOfListScheduleArk(data);
-    // console.log("🚀 ~ listSchedule ~ parsed:", parsed);
     if (parsed instanceof type.errors) {
         throw new Error("Received invalid Schedule data");
     }
