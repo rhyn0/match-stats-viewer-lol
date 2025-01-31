@@ -31,6 +31,12 @@ const navComponents = {
                 description:
                     "View all teams participating in the tournament. Check out their rosters.",
             },
+            {
+                label: "Schedule",
+                to: "/schedule",
+                description:
+                    "Previous Results and To be played matchups on the calendar.",
+            },
         ],
     },
     //     playoffs: {
