@@ -58,7 +58,12 @@ export default function MatchList() {
                 variant="outline"
                 type="button"
                 aria-label="Scroll to Next Unplayed"
-                onClick={() => unplayedWeekRef.current?.scrollIntoView()}
+                onClick={() =>
+                    unplayedWeekRef.current?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                    })
+                }
                 className="fixed bottom-auto top-32 right-8 p-1 bg-accent text-white text-lg rounded-md shadow-md hover:bg-blue-600 focus:outline-none z-50 size-10 [&_svg]:size-fit"
             >
                 <span className="sr-only">Scroll to Next Unplayed</span>
