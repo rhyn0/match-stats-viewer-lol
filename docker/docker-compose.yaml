@@ -1,5 +1,10 @@
 services:
     sqld:
+        deploy:
+          resources:
+            limits:
+              cpus: "0.5"
+              memory: 50M
         image: ghcr.io/tursodatabase/libsql-server:latest
         environment:
             SQLD_NODE: primary

@@ -37,6 +37,12 @@ const navComponents = {
                 description:
                     "Previous Results and To be played matchups on the calendar.",
             },
+            {
+                label: "Standings",
+                to: "/stats/standing",
+                description:
+                    "Current standings of the teams in the tournament.",
+            },
         ],
     },
     //     playoffs: {
