@@ -1,3 +1,4 @@
+import "server-only";
 import env from "@/config/env";
 import schema from "@/db/schema";
 import { createClient } from "@libsql/client";
