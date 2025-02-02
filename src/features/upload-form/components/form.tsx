@@ -87,7 +87,7 @@ export function UploadForm({ onSuccess, ...options }: UploadFormProps) {
         name: "playerMatchRecords",
     });
     const onSubmit = (values: InputUploadMatchT) => {
-        const parsed: UploadMatchT = {
+        const parsed = {
             ...values,
             matchRecord: {
                 ...values.matchRecord,
@@ -100,7 +100,25 @@ export function UploadForm({ onSuccess, ...options }: UploadFormProps) {
                 kda: parseKda(rec.kda.raw),
             })),
         };
-        uploadMutation.mutate(parsed);
+        const teamKills = parsed.playerMatchRecords.reduce<{
+            blueTotalKills: number;
+            redTotalKills: number;
+        }>(
+            (acc, rec, idx) => {
+                if (idx < 5) {
+                    acc.blueTotalKills += rec.kda.kills;
+                } else {
+                    acc.redTotalKills += rec.kda.kills;
+                }
+                return acc;
+            },
+            { blueTotalKills: 0, redTotalKills: 0 },
+        );
+        const final: UploadMatchT = {
+            ...parsed,
+            ...teamKills,
+        };
+        uploadMutation.mutate(final);
     };
 
     return (

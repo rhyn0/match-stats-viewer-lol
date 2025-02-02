@@ -1,483 +1,455 @@
 {
-  "version": "6",
-  "dialect": "sqlite",
-  "id": "bd21c4ed-6cf8-4147-85bd-1e0abbed277f",
-  "prevId": "f925d458-62b4-4d2a-960b-389d7905860d",
-  "tables": {
-    "bans_for_match": {
-      "name": "bans_for_match",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "integer",
-          "primaryKey": true,
-          "notNull": true,
-          "autoincrement": true
+    "version": "6",
+    "dialect": "sqlite",
+    "id": "bd21c4ed-6cf8-4147-85bd-1e0abbed277f",
+    "prevId": "f925d458-62b4-4d2a-960b-389d7905860d",
+    "tables": {
+        "bans_for_match": {
+            "name": "bans_for_match",
+            "columns": {
+                "id": {
+                    "name": "id",
+                    "type": "integer",
+                    "primaryKey": true,
+                    "notNull": true,
+                    "autoincrement": true
+                },
+                "match_id": {
+                    "name": "match_id",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false
+                },
+                "blue_ban_1": {
+                    "name": "blue_ban_1",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false
+                },
+                "blue_ban_2": {
+                    "name": "blue_ban_2",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false
+                },
+                "blue_ban_3": {
+                    "name": "blue_ban_3",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false
+                },
+                "blue_ban_4": {
+                    "name": "blue_ban_4",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false
+                },
+                "blue_ban_5": {
+                    "name": "blue_ban_5",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false
+                },
+                "red_ban_1": {
+                    "name": "red_ban_1",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false
+                },
+                "red_ban_2": {
+                    "name": "red_ban_2",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false
+                },
+                "red_ban_3": {
+                    "name": "red_ban_3",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false
+                },
+                "red_ban_4": {
+                    "name": "red_ban_4",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false
+                },
+                "red_ban_5": {
+                    "name": "red_ban_5",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {
+                "bans_for_match_match_id_matches_played_id_fk": {
+                    "name": "bans_for_match_match_id_matches_played_id_fk",
+                    "tableFrom": "bans_for_match",
+                    "tableTo": "matches_played",
+                    "columnsFrom": ["match_id"],
+                    "columnsTo": ["id"],
+                    "onDelete": "no action",
+                    "onUpdate": "no action"
+                }
+            },
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {},
+            "checkConstraints": {}
         },
-        "match_id": {
-          "name": "match_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+        "matches_played": {
+            "name": "matches_played",
+            "columns": {
+                "id": {
+                    "name": "id",
+                    "type": "integer",
+                    "primaryKey": true,
+                    "notNull": true,
+                    "autoincrement": true
+                },
+                "blue_team_id": {
+                    "name": "blue_team_id",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "red_team_id": {
+                    "name": "red_team_id",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "blue_win": {
+                    "name": "blue_win",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false
+                },
+                "game_time_seconds": {
+                    "name": "game_time_seconds",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false
+                },
+                "match_date": {
+                    "name": "match_date",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false,
+                    "default": "CURRENT_TIMESTAMP"
+                },
+                "is_playoffs": {
+                    "name": "is_playoffs",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false,
+                    "default": false
+                },
+                "game_week": {
+                    "name": "game_week",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false,
+                    "default": 1
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {
+                "matches_played_blue_team_id_participating_teams_id_fk": {
+                    "name": "matches_played_blue_team_id_participating_teams_id_fk",
+                    "tableFrom": "matches_played",
+                    "tableTo": "participating_teams",
+                    "columnsFrom": ["blue_team_id"],
+                    "columnsTo": ["id"],
+                    "onDelete": "no action",
+                    "onUpdate": "no action"
+                },
+                "matches_played_red_team_id_participating_teams_id_fk": {
+                    "name": "matches_played_red_team_id_participating_teams_id_fk",
+                    "tableFrom": "matches_played",
+                    "tableTo": "participating_teams",
+                    "columnsFrom": ["red_team_id"],
+                    "columnsTo": ["id"],
+                    "onDelete": "no action",
+                    "onUpdate": "no action"
+                }
+            },
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {},
+            "checkConstraints": {}
         },
-        "blue_ban_1": {
-          "name": "blue_ban_1",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+        "player_matches": {
+            "name": "player_matches",
+            "columns": {
+                "id": {
+                    "name": "id",
+                    "type": "integer",
+                    "primaryKey": true,
+                    "notNull": true,
+                    "autoincrement": true
+                },
+                "player_id": {
+                    "name": "player_id",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false
+                },
+                "match_id": {
+                    "name": "match_id",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false
+                },
+                "raw_kda": {
+                    "name": "raw_kda",
+                    "type": "text(10)",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "position": {
+                    "name": "position",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "champion_name": {
+                    "name": "champion_name",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "player_kills": {
+                    "name": "player_kills",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "player_deaths": {
+                    "name": "player_deaths",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "player_assists": {
+                    "name": "player_assists",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "kill_participation": {
+                    "name": "kill_participation",
+                    "type": "real",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false,
+                    "default": 0
+                },
+                "on_blue_team": {
+                    "name": "on_blue_team",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false,
+                    "default": false
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {
+                "player_matches_player_id_players_id_fk": {
+                    "name": "player_matches_player_id_players_id_fk",
+                    "tableFrom": "player_matches",
+                    "tableTo": "players",
+                    "columnsFrom": ["player_id"],
+                    "columnsTo": ["id"],
+                    "onDelete": "no action",
+                    "onUpdate": "no action"
+                },
+                "player_matches_match_id_matches_played_id_fk": {
+                    "name": "player_matches_match_id_matches_played_id_fk",
+                    "tableFrom": "player_matches",
+                    "tableTo": "matches_played",
+                    "columnsFrom": ["match_id"],
+                    "columnsTo": ["id"],
+                    "onDelete": "no action",
+                    "onUpdate": "no action"
+                }
+            },
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {},
+            "checkConstraints": {}
         },
-        "blue_ban_2": {
-          "name": "blue_ban_2",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+        "players": {
+            "name": "players",
+            "columns": {
+                "id": {
+                    "name": "id",
+                    "type": "integer",
+                    "primaryKey": true,
+                    "notNull": true,
+                    "autoincrement": true
+                },
+                "team_id": {
+                    "name": "team_id",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false
+                },
+                "player_name": {
+                    "name": "player_name",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "summoner_name": {
+                    "name": "summoner_name",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "position": {
+                    "name": "position",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                }
+            },
+            "indexes": {
+                "player_summoner_name_uniq_idx": {
+                    "name": "player_summoner_name_uniq_idx",
+                    "columns": ["summoner_name"],
+                    "isUnique": true
+                }
+            },
+            "foreignKeys": {
+                "players_team_id_participating_teams_id_fk": {
+                    "name": "players_team_id_participating_teams_id_fk",
+                    "tableFrom": "players",
+                    "tableTo": "participating_teams",
+                    "columnsFrom": ["team_id"],
+                    "columnsTo": ["id"],
+                    "onDelete": "no action",
+                    "onUpdate": "no action"
+                }
+            },
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {},
+            "checkConstraints": {}
         },
-        "blue_ban_3": {
-          "name": "blue_ban_3",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+        "participating_teams": {
+            "name": "participating_teams",
+            "columns": {
+                "id": {
+                    "name": "id",
+                    "type": "integer",
+                    "primaryKey": true,
+                    "notNull": true,
+                    "autoincrement": true
+                },
+                "default_name": {
+                    "name": "default_name",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "team_name": {
+                    "name": "team_name",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false
+                },
+                "modified_at": {
+                    "name": "modified_at",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false,
+                    "default": "CURRENT_TIMESTAMP"
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {},
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {},
+            "checkConstraints": {}
         },
-        "blue_ban_4": {
-          "name": "blue_ban_4",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "blue_ban_5": {
-          "name": "blue_ban_5",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "red_ban_1": {
-          "name": "red_ban_1",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "red_ban_2": {
-          "name": "red_ban_2",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "red_ban_3": {
-          "name": "red_ban_3",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "red_ban_4": {
-          "name": "red_ban_4",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "red_ban_5": {
-          "name": "red_ban_5",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+        "users": {
+            "name": "users",
+            "columns": {
+                "id": {
+                    "name": "id",
+                    "type": "integer",
+                    "primaryKey": true,
+                    "notNull": true,
+                    "autoincrement": true
+                },
+                "user_email": {
+                    "name": "user_email",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "role": {
+                    "name": "role",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                }
+            },
+            "indexes": {
+                "user_email_idx": {
+                    "name": "user_email_idx",
+                    "columns": ["user_email"],
+                    "isUnique": true
+                }
+            },
+            "foreignKeys": {},
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {},
+            "checkConstraints": {}
         }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "bans_for_match_match_id_matches_played_id_fk": {
-          "name": "bans_for_match_match_id_matches_played_id_fk",
-          "tableFrom": "bans_for_match",
-          "tableTo": "matches_played",
-          "columnsFrom": [
-            "match_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "checkConstraints": {}
     },
-    "matches_played": {
-      "name": "matches_played",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "integer",
-          "primaryKey": true,
-          "notNull": true,
-          "autoincrement": true
-        },
-        "blue_team_id": {
-          "name": "blue_team_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "red_team_id": {
-          "name": "red_team_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "blue_win": {
-          "name": "blue_win",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "game_time_seconds": {
-          "name": "game_time_seconds",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "match_date": {
-          "name": "match_date",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false,
-          "default": "CURRENT_TIMESTAMP"
-        },
-        "is_playoffs": {
-          "name": "is_playoffs",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false,
-          "default": false
-        },
-        "game_week": {
-          "name": "game_week",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": 1
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "matches_played_blue_team_id_participating_teams_id_fk": {
-          "name": "matches_played_blue_team_id_participating_teams_id_fk",
-          "tableFrom": "matches_played",
-          "tableTo": "participating_teams",
-          "columnsFrom": [
-            "blue_team_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        },
-        "matches_played_red_team_id_participating_teams_id_fk": {
-          "name": "matches_played_red_team_id_participating_teams_id_fk",
-          "tableFrom": "matches_played",
-          "tableTo": "participating_teams",
-          "columnsFrom": [
-            "red_team_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "checkConstraints": {}
+    "views": {},
+    "enums": {},
+    "_meta": {
+        "schemas": {},
+        "tables": {},
+        "columns": {}
     },
-    "player_matches": {
-      "name": "player_matches",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "integer",
-          "primaryKey": true,
-          "notNull": true,
-          "autoincrement": true
-        },
-        "player_id": {
-          "name": "player_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "match_id": {
-          "name": "match_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "raw_kda": {
-          "name": "raw_kda",
-          "type": "text(10)",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "position": {
-          "name": "position",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "champion_name": {
-          "name": "champion_name",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "player_kills": {
-          "name": "player_kills",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "player_deaths": {
-          "name": "player_deaths",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "player_assists": {
-          "name": "player_assists",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "kill_participation": {
-          "name": "kill_participation",
-          "type": "real",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": 0
-        },
-        "on_blue_team": {
-          "name": "on_blue_team",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": false
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "player_matches_player_id_players_id_fk": {
-          "name": "player_matches_player_id_players_id_fk",
-          "tableFrom": "player_matches",
-          "tableTo": "players",
-          "columnsFrom": [
-            "player_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        },
-        "player_matches_match_id_matches_played_id_fk": {
-          "name": "player_matches_match_id_matches_played_id_fk",
-          "tableFrom": "player_matches",
-          "tableTo": "matches_played",
-          "columnsFrom": [
-            "match_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "checkConstraints": {}
-    },
-    "players": {
-      "name": "players",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "integer",
-          "primaryKey": true,
-          "notNull": true,
-          "autoincrement": true
-        },
-        "team_id": {
-          "name": "team_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "player_name": {
-          "name": "player_name",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "summoner_name": {
-          "name": "summoner_name",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "position": {
-          "name": "position",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        }
-      },
-      "indexes": {
-        "player_summoner_name_uniq_idx": {
-          "name": "player_summoner_name_uniq_idx",
-          "columns": [
-            "summoner_name"
-          ],
-          "isUnique": true
-        }
-      },
-      "foreignKeys": {
-        "players_team_id_participating_teams_id_fk": {
-          "name": "players_team_id_participating_teams_id_fk",
-          "tableFrom": "players",
-          "tableTo": "participating_teams",
-          "columnsFrom": [
-            "team_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "checkConstraints": {}
-    },
-    "participating_teams": {
-      "name": "participating_teams",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "integer",
-          "primaryKey": true,
-          "notNull": true,
-          "autoincrement": true
-        },
-        "default_name": {
-          "name": "default_name",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "team_name": {
-          "name": "team_name",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "modified_at": {
-          "name": "modified_at",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false,
-          "default": "CURRENT_TIMESTAMP"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "checkConstraints": {}
-    },
-    "users": {
-      "name": "users",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "integer",
-          "primaryKey": true,
-          "notNull": true,
-          "autoincrement": true
-        },
-        "user_email": {
-          "name": "user_email",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "role": {
-          "name": "role",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        }
-      },
-      "indexes": {
-        "user_email_idx": {
-          "name": "user_email_idx",
-          "columns": [
-            "user_email"
-          ],
-          "isUnique": true
-        }
-      },
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "checkConstraints": {}
+    "internal": {
+        "indexes": {}
     }
-  },
-  "views": {},
-  "enums": {},
-  "_meta": {
-    "schemas": {},
-    "tables": {},
-    "columns": {}
-  },
-  "internal": {
-    "indexes": {}
-  }
 }

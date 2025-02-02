@@ -80,12 +80,17 @@ export async function insertSingleMatch(data: UploadMatchT): Promise<void> {
                 redBan4: data.redBans[4],
                 redBan5: data.redBans[5],
             });
-            for (const {
-                playerName,
-                position,
-                championName,
-                kda,
-            } of data.playerMatchRecords) {
+            for (
+                let index = 0;
+                index < data.playerMatchRecords.length;
+                index++
+            ) {
+                const { playerName, position, championName, kda } =
+                    data.playerMatchRecords[index];
+                const bluePlayer = index < 5;
+                const killParticipation =
+                    (kda.kills + kda.assists) /
+                    (bluePlayer ? data.blueTotalKills : data.redTotalKills);
                 const [{ id: playerId }] = await selectOrInsertPlayer(tx, {
                     name: playerName.slice(0, playerName.indexOf("#")),
                     summonerName: playerName,
@@ -100,6 +105,8 @@ export async function insertSingleMatch(data: UploadMatchT): Promise<void> {
                     playerKills: kda.kills,
                     playerDeaths: kda.deaths,
                     playerAssists: kda.assists,
+                    killParticipation,
+                    bluePlayer,
                 });
             }
         });

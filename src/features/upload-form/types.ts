@@ -47,11 +47,17 @@ export const UploadMatchArk = type({
     playerMatchRecords: PlayerMatchRecordArk.array(),
     blueBans: BansArk,
     redBans: BansArk,
+    blueTotalKills: "number >= 0",
+    redTotalKills: "number >= 0",
 });
 export type UploadMatchT = typeof UploadMatchArk.infer;
 
 export const InputUploadMatchArk = type({
-    "...": UploadMatchArk.omit("playerMatchRecords"),
+    "...": UploadMatchArk.omit(
+        "playerMatchRecords",
+        "blueTotalKills",
+        "redTotalKills",
+    ),
     matchRecord: {
         "...": UploadMatchArk.get("matchRecord"),
         gameTimeSeconds: /^\d{1,3}:\d{2}/,
