@@ -40,7 +40,7 @@ export default function Home() {
                         {
                             title: "Standings",
                             icon: Trophy,
-                            href: "/stats/standings",
+                            href: "/stats/standing",
                         },
                         {
                             title: "Player Stats",
