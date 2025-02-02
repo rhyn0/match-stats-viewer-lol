@@ -20,6 +20,11 @@ const navComponents = {
                 description:
                     "Table view of champion statistics like ban rate and presence.",
             },
+            {
+                label: "Weekly Statistics",
+                to: "/stats/weekly",
+                description: "Charts visualization KDA stats by each week.",
+            },
         ],
     },
     information: {
