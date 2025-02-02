@@ -48,24 +48,36 @@ export const columns = [
     playerColumnHelper.group({
         header: "Kill Participation",
         columns: [
-            playerColumnHelper.accessor("killParticipation.min", {
-                header: "Minimum Kill Participation",
-                meta: {
-                    filterVariant: "range",
+            playerColumnHelper.accessor<"killParticipation.min", number>(
+                "killParticipation.min",
+                {
+                    header: "Minimum Kill Participation",
+                    meta: {
+                        filterVariant: "range",
+                    },
+                    cell: ({ getValue }) => getValue().toFixed(2),
                 },
-            }),
-            playerColumnHelper.accessor("killParticipation.avg", {
-                header: "Average Kill Participation",
-                meta: {
-                    filterVariant: "range",
+            ),
+            playerColumnHelper.accessor<"killParticipation.avg", number>(
+                "killParticipation.avg",
+                {
+                    header: "Average Kill Participation",
+                    meta: {
+                        filterVariant: "range",
+                    },
+                    cell: ({ getValue }) => getValue().toFixed(2),
                 },
-            }),
-            playerColumnHelper.accessor("killParticipation.max", {
-                header: "Maximum Kill Participation",
-                meta: {
-                    filterVariant: "range",
+            ),
+            playerColumnHelper.accessor<"killParticipation.max", number>(
+                "killParticipation.max",
+                {
+                    header: "Maximum Kill Participation",
+                    meta: {
+                        filterVariant: "range",
+                    },
+                    cell: ({ getValue }) => getValue().toFixed(2),
                 },
-            }),
+            ),
         ],
     }),
     playerColumnHelper.group({
