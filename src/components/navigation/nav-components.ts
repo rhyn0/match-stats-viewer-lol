@@ -25,6 +25,11 @@ const navComponents = {
                 to: "/stats/weekly",
                 description: "Charts visualization KDA stats by each week.",
             },
+            {
+                label: "Position Statistics",
+                to: "/stats/position",
+                description: "Charts visualization KDA stats by each position.",
+            },
         ],
     },
     information: {
