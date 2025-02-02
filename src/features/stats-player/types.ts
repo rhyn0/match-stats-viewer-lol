@@ -15,6 +15,11 @@ export const OverallPlayerStatRecordArk = type({
     champions: {
         mostPlayed: "string | null",
     },
+    killParticipation: {
+        min: "number >= 0",
+        max: "number >= 0",
+        avg: "number >= 0",
+    },
 });
 
 export type OverallPlayerStatRecordT = typeof OverallPlayerStatRecordArk.infer;
@@ -28,6 +33,7 @@ type PlayerMatchT = Pick<
     | "playerKills"
     | "playerDeaths"
     | "playerAssists"
+    | "killParticipation"
 >;
 export type OverallPlayerStatQueryT = PlayerT & {
     playerMatchesRel: PlayerMatchT[];

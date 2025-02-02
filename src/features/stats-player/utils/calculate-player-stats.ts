@@ -10,14 +10,36 @@ import type {
 export function calculatePlayerStats(
     playerRecord: OverallPlayerStatQueryT,
 ): OverallPlayerStatRecordT {
-    const { totalKills, totalDeaths, totalAssists } =
+    const { totalKills, totalDeaths, totalAssists, killParticipation } =
         playerRecord.playerMatchesRel.reduce(
-            (acc, rec) => ({
+            (acc, rec, idx) => ({
                 totalKills: acc.totalKills + rec.playerKills,
                 totalDeaths: acc.totalDeaths + rec.playerDeaths,
                 totalAssists: acc.totalAssists + rec.playerAssists,
+                killParticipation: {
+                    min: Math.min(
+                        acc.killParticipation.min,
+                        rec.killParticipation,
+                    ),
+                    max: Math.max(
+                        acc.killParticipation.max,
+                        rec.killParticipation,
+                    ),
+                    avg:
+                        (acc.killParticipation.avg * idx) / (idx + 1) +
+                        rec.killParticipation / (idx + 1),
+                },
             }),
-            { totalKills: 0, totalDeaths: 0, totalAssists: 0 },
+            {
+                totalKills: 0,
+                totalDeaths: 0,
+                totalAssists: 0,
+                killParticipation: {
+                    min: Number.POSITIVE_INFINITY,
+                    max: Number.NEGATIVE_INFINITY,
+                    avg: 0,
+                },
+            },
         );
     // count occurrence of each champion from that players match, return highest count
     const championPlays = playerRecord.playerMatchesRel.reduce((acc, rec) => {
@@ -37,6 +59,7 @@ export function calculatePlayerStats(
         totalKills,
         totalDeaths,
         totalAssists,
+        killParticipation,
         gamesPlayed: playerRecord.playerMatchesRel.length,
         champions: {
             mostPlayed: getHighestValueKey(championPlays),

@@ -44,6 +44,7 @@ async function main() {
                 playerKills: f.int({ minValue: 0 }),
                 playerDeaths: f.int({ minValue: 0 }),
                 playerAssists: f.int({ minValue: 0 }),
+                killParticipation: f.number({ minValue: 0, maxValue: 0.95 }),
             },
         },
         matchBans: {

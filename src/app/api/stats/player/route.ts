@@ -19,6 +19,7 @@ export async function GET() {
                     playerKills: true,
                     playerDeaths: true,
                     playerAssists: true,
+                    killParticipation: true,
                 },
             },
             playerTeamRel: {

@@ -2,7 +2,7 @@
 
 import { playerPositionOptions } from "@/types/league";
 import { relations } from "drizzle-orm";
-import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { integer, real, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { matches } from "./match";
 import { players } from "./player";
 
@@ -19,6 +19,8 @@ export const playerMatches = sqliteTable("player_matches", {
     playerKills: integer("player_kills").notNull(),
     playerDeaths: integer("player_deaths").notNull(),
     playerAssists: integer("player_assists").notNull(),
+    killParticipation: real("kill_participation").notNull(),
+    bluePlayer: integer("on_blue_team", { mode: "boolean" }).notNull(),
 });
 
 export const playerWhoPlayedRel = relations(playerMatches, ({ one }) => ({
