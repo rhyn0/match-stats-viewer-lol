@@ -15,7 +15,7 @@ export default function WeeklyStatsPage() {
     return (
         <main>
             <TypoH1 className="font-bangers tracking-wide text-center">
-                Weekly Stats
+                Weekly KDA Stats
             </TypoH1>
             <HydrationBoundary state={dehydrate(queryClient)}>
                 <ChartsClient />
