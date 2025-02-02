@@ -19,11 +19,8 @@ export const playerMatches = sqliteTable("player_matches", {
     playerKills: integer("player_kills").notNull(),
     playerDeaths: integer("player_deaths").notNull(),
     playerAssists: integer("player_assists").notNull(),
-    // While doing migration, set these defaults
-    killParticipation: real("kill_participation").default(0).notNull(),
-    bluePlayer: integer("on_blue_team", { mode: "boolean" })
-        .default(false)
-        .notNull(),
+    killParticipation: real("kill_participation").notNull(),
+    bluePlayer: integer("on_blue_team", { mode: "boolean" }).notNull(),
 });
 
 export const playerWhoPlayedRel = relations(playerMatches, ({ one }) => ({
