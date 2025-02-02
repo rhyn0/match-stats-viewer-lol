@@ -1,5 +1,6 @@
 "use client";
 
+import ChartToggleRoot from "@/components/chart-toggle";
 import {
     Card,
     CardContent,
@@ -8,7 +9,6 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 import BarChart from "@/features/weekly-stats/components/bar-chart";
-import ChartToggleRoot from "@/features/weekly-stats/components/chart-toggle";
 import PieChart from "@/features/weekly-stats/components/pie-chart";
 import useWeeklyAssistStatsQuery from "@/features/weekly-stats/hooks/use-weekly-assists";
 import useWeeklyDeathStatsQuery from "@/features/weekly-stats/hooks/use-weekly-deaths";
