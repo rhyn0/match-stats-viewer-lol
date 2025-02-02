@@ -56,7 +56,7 @@ export default function PieChart<DataT extends BasePositionDataT>({
 }: PieChartProps<DataT>) {
     const labelFormatter = React.useCallback(
         // biome-ignore lint/suspicious/noExplicitAny: library type
-        (_x: any, item: any) => `Week ${item[0].payload.gameWeek}`,
+        (_x: any, item: any) => `Position ${item[0].payload.position}`,
         [],
     );
 

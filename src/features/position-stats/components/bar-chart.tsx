@@ -48,7 +48,7 @@ export default function BarChart<DataT extends BasePositionDataT>({
                 <CartesianGrid strokeDasharray="3 3" />
                 <YAxis />
                 <XAxis
-                    dataKey="gameWeek"
+                    dataKey="position"
                     className="text-black"
                     tickLine={false}
                     tickMargin={10}
