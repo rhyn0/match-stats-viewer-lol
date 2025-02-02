@@ -1,6 +1,6 @@
 import { TypoH2, TypoH3, TypoH4 } from "@/components/typography/headings";
 import banner from "@/public/banner.png";
-import { BarChart2, Users } from "lucide-react";
+import { BarChart2, Trophy, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -32,16 +32,16 @@ export default function Home() {
                     {[
                         { title: "Teams", icon: Users, href: "/team/info" },
                         // { title: "Players", icon: Users, href: "/players" },
-                        // {
-                        //     title: "Schedule",
-                        //     icon: BarChart2,
-                        //     href: "/schedule",
-                        // },
-                        // {
-                        //     title: "Standings",
-                        //     icon: Trophy,
-                        //     href: "/standings",
-                        // },
+                        {
+                            title: "Schedule",
+                            icon: BarChart2,
+                            href: "/schedule",
+                        },
+                        {
+                            title: "Standings",
+                            icon: Trophy,
+                            href: "/stats/standings",
+                        },
                         {
                             title: "Player Stats",
                             icon: BarChart2,

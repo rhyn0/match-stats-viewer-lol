@@ -8,24 +8,36 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import BarChart from "@/features/weekly-stats/components/bar-chart";
-import PieChart from "@/features/weekly-stats/components/pie-chart";
-import useWeeklyAssistStatsQuery from "@/features/weekly-stats/hooks/use-weekly-assists";
-import useWeeklyDeathStatsQuery from "@/features/weekly-stats/hooks/use-weekly-deaths";
-import useWeeklyKillStatsQuery from "@/features/weekly-stats/hooks/use-weekly-kills";
+import BarChart from "@/features/position-stats/components/bar-chart";
+import PieChart from "@/features/position-stats/components/pie-chart";
+import usePositionAssistsQuery from "@/features/position-stats/hooks/use-position-assists";
+import usePositionDeathsQuery from "@/features/position-stats/hooks/use-position-deaths";
+import usePositionKillsQuery from "@/features/position-stats/hooks/use-position-kills";
+
+const barChartConfig = {
+    totalKills: {
+        label: "Kills",
+    },
+    totalDeaths: {
+        label: "Deaths",
+    },
+    totalAssists: {
+        label: "Assists",
+    },
+};
 
 export default function ChartsClient() {
-    const weeklyKillsQuery = useWeeklyKillStatsQuery();
-    const weeklyDeathsQuery = useWeeklyDeathStatsQuery();
-    const weeklyAssistsQuery = useWeeklyAssistStatsQuery();
+    const weeklyKillsQuery = usePositionKillsQuery();
+    const weeklyDeathsQuery = usePositionDeathsQuery();
+    const weeklyAssistsQuery = usePositionAssistsQuery();
 
     return (
         <div className="grid lg:grid-cols-2 lg:grid-rows-2 grid-flow-row">
             <Card className="relative">
                 <CardHeader>
-                    <CardTitle>Weekly Kills</CardTitle>
+                    <CardTitle>Position Kills</CardTitle>
                     <CardDescription>
-                        Number of kills per planned match week.
+                        Number of kills per possible position.
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -40,8 +52,9 @@ export default function ChartsClient() {
                         }
                         barComponent={
                             <BarChart
+                                chartConfig={barChartConfig}
                                 dataKey="totalKills"
-                                tooltipLabel="Kills this Week"
+                                tooltipLabel="Kills for Position"
                                 data={weeklyKillsQuery.data}
                             />
                         }
@@ -51,9 +64,9 @@ export default function ChartsClient() {
             </Card>
             <Card className="relative">
                 <CardHeader>
-                    <CardTitle>Weekly Deaths</CardTitle>
+                    <CardTitle>Position Deaths</CardTitle>
                     <CardDescription>
-                        Number of deaths per planned match week.
+                        Number of deaths per possible position.
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -68,8 +81,9 @@ export default function ChartsClient() {
                         }
                         barComponent={
                             <BarChart
+                                chartConfig={barChartConfig}
                                 dataKey="totalDeaths"
-                                tooltipLabel="Deaths this Week"
+                                tooltipLabel="Deaths this Position"
                                 data={weeklyDeathsQuery.data}
                             />
                         }
@@ -79,9 +93,9 @@ export default function ChartsClient() {
             </Card>
             <Card className="relative">
                 <CardHeader>
-                    <CardTitle>Weekly Assists</CardTitle>
+                    <CardTitle>Position Assists</CardTitle>
                     <CardDescription>
-                        Number of assists per planned match week.
+                        Number of assists per possible position.
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -96,8 +110,9 @@ export default function ChartsClient() {
                         }
                         barComponent={
                             <BarChart
+                                chartConfig={barChartConfig}
                                 dataKey="totalAssists"
-                                tooltipLabel="Assists this Week"
+                                tooltipLabel="Assists this Position"
                                 data={weeklyAssistsQuery.data}
                             />
                         }
