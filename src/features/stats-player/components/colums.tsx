@@ -46,6 +46,29 @@ export const columns = [
         ],
     }),
     playerColumnHelper.group({
+        header: "Kill Participation",
+        columns: [
+            playerColumnHelper.accessor("killParticipation.min", {
+                header: "Minimum Kill Participation",
+                meta: {
+                    filterVariant: "range",
+                },
+            }),
+            playerColumnHelper.accessor("killParticipation.avg", {
+                header: "Average Kill Participation",
+                meta: {
+                    filterVariant: "range",
+                },
+            }),
+            playerColumnHelper.accessor("killParticipation.max", {
+                header: "Maximum Kill Participation",
+                meta: {
+                    filterVariant: "range",
+                },
+            }),
+        ],
+    }),
+    playerColumnHelper.group({
         header: "Total Stats",
         columns: [
             playerColumnHelper.accessor("gamesPlayed", {
