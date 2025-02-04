@@ -51,16 +51,17 @@ function ChampionFormCombobox({ value, onSelect }: ChampionFormComboboxProps) {
                                     key={champ}
                                     value={champ}
                                     onSelect={() => onSelect(champ)}
+                                    className="text-left"
                                 >
+                                    {champ}
                                     <Check
                                         className={cn(
-                                            "ml-0 mr-2 h-4 w-4",
+                                            "ml-2 mr-0 h-4 w-4",
                                             champ === value
                                                 ? "opacity-100"
                                                 : "opacity-0",
                                         )}
                                     />
-                                    {champ}
                                 </CommandItem>
                             ))}
                         </CommandGroup>
