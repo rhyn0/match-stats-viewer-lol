@@ -64,7 +64,14 @@ async function main() {
     }));
 }
 
+// biome-ignore lint/correctness/noUnusedVariables: only uncomment usage if necessary
+async function reset() {
+    await db.delete(matchBans);
+    await db.delete(playerMatches);
+    await db.delete(matches);
+    await db.delete(players);
+    await db.delete(teams);
+}
+
 main();
-// import { reset } from "drizzle-seed";
-// // @ts-expect-error -- hahha
-// await reset(db, { teams, players });
+// reset();
