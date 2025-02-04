@@ -31,7 +31,7 @@ function ChampionFormCombobox({ value, onSelect }: ChampionFormComboboxProps) {
                         variant="outline"
                         // biome-ignore lint/a11y/useSemanticElements:
                         role="combobox"
-                        className="w-[200px] justify-between"
+                        className="w-[200px] justify-between flex"
                     >
                         {value
                             ? allChampions.find((champ) => champ === value)
@@ -40,7 +40,7 @@ function ChampionFormCombobox({ value, onSelect }: ChampionFormComboboxProps) {
                     </Button>
                 </FormControl>
             </PopoverTrigger>
-            <PopoverContent className="w-[200px] p-0">
+            <PopoverContent className="w-[160px] max-w-min p-0">
                 <Command>
                     <CommandInput placeholder="Search framework..." />
                     <CommandList>
@@ -54,7 +54,7 @@ function ChampionFormCombobox({ value, onSelect }: ChampionFormComboboxProps) {
                                 >
                                     <Check
                                         className={cn(
-                                            "ml-auto mr-2 h-4 w-4",
+                                            "ml-0 mr-2 h-4 w-4",
                                             champ === value
                                                 ? "opacity-100"
                                                 : "opacity-0",
