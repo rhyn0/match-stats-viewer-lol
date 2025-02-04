@@ -41,6 +41,7 @@ import {
     type InputUploadMatchT,
     type UploadMatchT,
 } from "../types";
+import ChampionFormCombobox from "./champ-selector";
 
 const defaultValues: DeepPartial<InputUploadMatchT> = {
     isPlayoffs: false,
@@ -301,13 +302,15 @@ export function UploadForm({ onSuccess, ...options }: UploadFormProps) {
                                             <FormLabel>
                                                 Blue Ban {idx + 1}
                                             </FormLabel>
-                                            <FormControl>
-                                                <Input
-                                                    placeholder="Champion X"
-                                                    {...field}
-                                                    value={field.value ?? ""}
-                                                />
-                                            </FormControl>
+                                            <ChampionFormCombobox
+                                                value={field.value}
+                                                onSelect={(champ) =>
+                                                    form.setValue(
+                                                        `blueBans.${(idx + 1) as 1 | 2 | 3 | 4 | 5}`,
+                                                        champ,
+                                                    )
+                                                }
+                                            />
                                             <FormMessage />
                                         </FormItem>
                                     </div>
@@ -328,13 +331,15 @@ export function UploadForm({ onSuccess, ...options }: UploadFormProps) {
                                             <FormLabel>
                                                 Red Ban {idx + 1}
                                             </FormLabel>
-                                            <FormControl>
-                                                <Input
-                                                    placeholder="Champion Y"
-                                                    {...field}
-                                                    value={field.value ?? ""}
-                                                />
-                                            </FormControl>
+                                            <ChampionFormCombobox
+                                                value={field.value}
+                                                onSelect={(champ) =>
+                                                    form.setValue(
+                                                        `redBans.${(idx + 1) as 1 | 2 | 3 | 4 | 5}`,
+                                                        champ,
+                                                    )
+                                                }
+                                            />
                                             <FormMessage />
                                         </FormItem>
                                     </div>
@@ -386,12 +391,15 @@ export function UploadForm({ onSuccess, ...options }: UploadFormProps) {
                                             <FormLabel>
                                                 Player {index + 1} Champion{" "}
                                             </FormLabel>
-                                            <FormControl>
-                                                <Input
-                                                    {...field}
-                                                    value={field.value ?? ""}
-                                                />
-                                            </FormControl>
+                                            <ChampionFormCombobox
+                                                value={field.value}
+                                                onSelect={(champ) =>
+                                                    form.setValue(
+                                                        `playerMatchRecords.${index}.championName`,
+                                                        champ,
+                                                    )
+                                                }
+                                            />
                                             <FormMessage />
                                         </FormItem>
                                     </div>
