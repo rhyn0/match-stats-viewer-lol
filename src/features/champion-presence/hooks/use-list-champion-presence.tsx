@@ -3,16 +3,12 @@ import { queryChampionPresenceQueryOptions } from "../api/get-champion-presence"
 
 import type { ExtraQueryOptionsI } from "@/types";
 import type championPresenceKeys from "../api/keys";
-import type { ChampionAppearanceT, ChampionPresenceT } from "../types";
+import type { ChampionPresenceT } from "../types";
 
 type Key = (typeof championPresenceKeys)["all"];
 
 export interface useChampionPresenceQueryProps
-    extends ExtraQueryOptionsI<
-        ChampionAppearanceT[],
-        Key,
-        ChampionPresenceT[]
-    > {}
+    extends ExtraQueryOptionsI<ChampionPresenceT[], Key> {}
 export default function useChampionPresenceQuery({
     ...options
 }: useChampionPresenceQueryProps = {}) {

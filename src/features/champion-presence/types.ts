@@ -1,27 +1,21 @@
-import type { GetChampionPresenceOutputT } from "@/lib/crud/champ-presence";
+import { allChampions } from "@/features/upload-form/constants";
 import { type } from "arktype";
 
-type Champion = string;
-
-export type ChampionAppearanceT = Omit<
-    GetChampionPresenceOutputT,
-    "picks" | "blueBans" | "redBans"
-> & {
-    picks: Champion[];
-    blueBans: Champion[];
-    redBans: Champion[];
-};
-
-export const ChampionAppearanceArk = type({
-    id: "number",
-    picks: "string[] > 0",
-    blueBans: "string[]",
-    redBans: "string[]",
-});
+export type Champion = (typeof allChampions)[number];
 
 export type ChampionPresenceT = {
-    champion: string;
-    picks: number;
-    bans: number;
-    totalGames: number;
+    champName: Champion;
+    wins: number;
+    losses: number;
+    timesBanned: number;
+    totalMatches: number;
 };
+export const championValidatorArk = type.enumerated(...allChampions);
+
+export const ChampionPresenceArk = type({
+    champName: championValidatorArk,
+    wins: "number.integer >= 0",
+    losses: "number.integer >= 0",
+    timesBanned: "number.integer >= 0",
+    totalMatches: "number.integer >= 0",
+});
