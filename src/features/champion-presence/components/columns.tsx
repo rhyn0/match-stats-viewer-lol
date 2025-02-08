@@ -1,13 +1,13 @@
+import divideDefault from "@/lib/divide-by-zero";
 import { createColumnHelper } from "@tanstack/react-table";
 
-import divideDefault from "@/lib/divide-by-zero";
 // type imports
 import type { ChampionPresenceT } from "../types";
 
 const presenceColumnHelper = createColumnHelper<ChampionPresenceT>();
 
 export const columns = [
-    presenceColumnHelper.accessor("champion", {
+    presenceColumnHelper.accessor("champName", {
         header: "Champion Name",
         meta: {
             filterVariant: "text",
@@ -17,22 +17,23 @@ export const columns = [
         header: "Ban",
         columns: [
             presenceColumnHelper.accessor(
-                (row) => `${row.bans} / ${row.totalGames}`,
+                (row) => `${row.timesBanned} / ${row.totalMatches}`,
                 {
                     header: "Ban Number",
                     meta: {
                         filterVariant: "range",
                     },
                     sortingFn: (rowA, rowB) =>
-                        rowA.original.bans > rowB.original.bans
+                        rowA.original.timesBanned > rowB.original.timesBanned
                             ? 1
-                            : rowA.original.bans < rowB.original.bans
+                            : rowA.original.timesBanned <
+                                rowB.original.timesBanned
                               ? -1
                               : 0,
                 },
             ),
             presenceColumnHelper.accessor(
-                (row) => divideDefault(row.bans, row.totalGames, 0),
+                (row) => divideDefault(row.timesBanned, row.totalMatches, 0),
                 {
                     header: "Ban Rate",
                     meta: {
@@ -50,24 +51,60 @@ export const columns = [
         header: "Picks",
         columns: [
             presenceColumnHelper.accessor(
-                (row) => `${row.picks} / ${row.totalGames}`,
+                (row) => `${row.wins + row.losses} / ${row.totalMatches}`,
                 {
                     header: "Pick Number",
                     meta: {
                         filterVariant: "range",
                     },
-                    sortingFn: (rowA, rowB) =>
-                        rowA.original.picks > rowB.original.picks
-                            ? 1
-                            : rowA.original.picks < rowB.original.picks
-                              ? -1
-                              : 0,
+                    sortingFn: (rowA, rowB) => {
+                        const picksA =
+                            rowA.original.wins + rowA.original.losses;
+                        const picksB =
+                            rowB.original.wins + rowB.original.losses;
+                        return picksA > picksB ? 1 : picksA < picksB ? -1 : 0;
+                    },
                 },
             ),
             presenceColumnHelper.accessor(
-                (row) => divideDefault(row.picks, row.totalGames, 0),
+                (row) =>
+                    divideDefault(row.wins + row.losses, row.totalMatches, 0),
                 {
                     header: "Pick Rate",
+                    meta: {
+                        filterVariant: "range",
+                    },
+                    cell({ getValue }) {
+                        const value: number = getValue();
+                        return value.toFixed(3);
+                    },
+                },
+            ),
+        ],
+    }),
+    presenceColumnHelper.group({
+        header: "Wins",
+        columns: [
+            presenceColumnHelper.accessor(
+                (row) => `${row.wins} / ${row.wins + row.losses}`,
+                {
+                    header: "Wins Number",
+                    meta: {
+                        filterVariant: "range",
+                    },
+                    sortingFn: (rowA, rowB) => {
+                        return rowA.original.wins > rowB.original.wins
+                            ? 1
+                            : rowA.original.wins < rowB.original.wins
+                              ? -1
+                              : 0;
+                    },
+                },
+            ),
+            presenceColumnHelper.accessor(
+                (row) => divideDefault(row.wins, row.wins + row.losses, 0),
+                {
+                    header: "Win Ratio",
                     meta: {
                         filterVariant: "range",
                     },
@@ -83,7 +120,8 @@ export const columns = [
         header: "Total Presence",
         columns: [
             presenceColumnHelper.accessor(
-                (row) => `${row.bans + row.picks} / ${row.totalGames}`,
+                (row) =>
+                    `${row.wins + row.losses + row.timesBanned} / ${row.totalMatches}`,
                 {
                     header: "Presence Number",
                     meta: {
@@ -91,9 +129,13 @@ export const columns = [
                     },
                     sortingFn: (rowA, rowB) => {
                         const rowATotalPresence =
-                            rowA.original.picks + rowA.original.bans;
+                            rowA.original.wins +
+                            rowA.original.losses +
+                            rowA.original.timesBanned;
                         const rowBTotalPresence =
-                            rowB.original.picks + rowB.original.bans;
+                            rowB.original.wins +
+                            rowA.original.losses +
+                            rowB.original.timesBanned;
                         return rowATotalPresence > rowBTotalPresence
                             ? 1
                             : rowATotalPresence < rowBTotalPresence
@@ -103,9 +145,14 @@ export const columns = [
                 },
             ),
             presenceColumnHelper.accessor(
-                (row) => divideDefault(row.picks + row.bans, row.totalGames, 0),
+                (row) =>
+                    divideDefault(
+                        row.wins + row.losses + row.timesBanned,
+                        row.totalMatches,
+                        0,
+                    ),
                 {
-                    header: "Ratio",
+                    header: "Presence Ratio",
                     meta: {
                         filterVariant: "range",
                     },

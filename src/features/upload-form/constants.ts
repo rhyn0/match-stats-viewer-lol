@@ -169,4 +169,4 @@ export const allChampions = [
     "Zilean",
     "Zoe",
     "Zyra",
-];
+] as const;
