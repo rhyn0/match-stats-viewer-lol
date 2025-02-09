@@ -81,6 +81,23 @@ export const columns = [
         ],
     }),
     playerColumnHelper.group({
+        header: "Champion",
+        columns: [
+            playerColumnHelper.accessor("champions.mostPlayed", {
+                header: "Most Played Champion",
+                meta: {
+                    filterVariant: "text",
+                },
+            }),
+            playerColumnHelper.accessor("champions.numberUnique", {
+                header: "Number Unique Champions Played",
+                meta: {
+                    filterVariant: "range",
+                },
+            }),
+        ],
+    }),
+    playerColumnHelper.group({
         header: "Total Stats",
         columns: [
             playerColumnHelper.accessor("gamesPlayed", {
