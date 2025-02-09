@@ -42,10 +42,13 @@ export function calculatePlayerStats(
             },
         );
     // count occurrence of each champion from that players match, return highest count
-    const championPlays = playerRecord.playerMatchesRel.reduce((acc, rec) => {
+    const championPlays = playerRecord.playerMatchesRel.reduce<
+        Map<string, number>
+    >((acc, rec) => {
         if (!acc.has(rec.playerChampionName)) {
             acc.set(rec.playerChampionName, 0);
         }
+        // @ts-expect-error - i cover the not set case above
         acc.set(rec.playerChampionName, acc.get(rec.playerChampionName) + 1);
         return acc;
     }, new Map());
@@ -63,6 +66,7 @@ export function calculatePlayerStats(
         gamesPlayed: playerRecord.playerMatchesRel.length,
         champions: {
             mostPlayed: getHighestValueKey(championPlays),
+            numberUnique: championPlays.size,
         },
     };
 }

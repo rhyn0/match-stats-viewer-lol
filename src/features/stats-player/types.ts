@@ -14,6 +14,7 @@ export const OverallPlayerStatRecordArk = type({
     gamesPlayed: "number.integer >= 0",
     champions: {
         mostPlayed: "string | null",
+        numberUnique: "number.integer >= 0",
     },
     killParticipation: {
         min: "number >= 0",
