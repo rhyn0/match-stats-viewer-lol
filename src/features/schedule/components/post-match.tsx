@@ -1,10 +1,11 @@
-import { Shield, Trophy } from "lucide-react";
-import useGetPlayedMatchQuery from "../hooks/use-get-match-details";
-
 import { TypoH3 } from "@/components/typography/headings";
+import { Spinner } from "@/components/ui/spinner";
 import { cn } from "@/lib/cn";
 import sortByPosition from "@/lib/sort-by-position";
+import { Shield, Trophy } from "lucide-react";
 import React from "react";
+import useGetPlayedMatchQuery from "../hooks/use-get-match-details";
+
 import type { PlayerScheduleResultT } from "../types";
 
 type Team = {
@@ -31,8 +32,12 @@ export default function LoLPostMatch({
         id: matchId,
         enabled: enabled,
     });
-    if (matchQuery.isPending || matchQuery.isError) {
-        return null;
+    if (matchQuery.isPending) {
+        return (
+            <div className="w-[300px] h-60 bg-secondary flex justify-center">
+                <Spinner size="xl" />
+            </div>
+        );
     }
 
     if (matchQuery.isError) {
