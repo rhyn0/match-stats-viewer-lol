@@ -6,6 +6,7 @@ import { cn } from "@/lib/cn";
 import { Eye, EyeOff } from "lucide-react";
 import React from "react";
 import type { ListScheduleT } from "../types";
+import LoLPostMatch from "./post-match";
 
 interface MatchProps
     extends Omit<
@@ -22,6 +23,7 @@ interface MatchProps
 }
 
 export default function Match({
+    matchId,
     blueTeam,
     blueWon,
     redTeam,
@@ -79,12 +81,19 @@ export default function Match({
                     className={`bg-secondary p-4 transition-all duration-300 ease-in-out
                       ${showResult ? "opacity-100" : "opacity-0 h-0 overflow-hidden"}`}
                 >
-                    <p className="font-semibold text-center">
+                    {/* <p className="font-semibold text-center">
                         Result:{" "}
                         <span className={showResult ? "" : "blur-sm"}>
                             {`${blueWon ? blueTeam : redTeam} Won!`}
                         </span>
-                    </p>
+                    </p> */}
+                    <LoLPostMatch
+                        blueTeamName={blueTeam}
+                        redTeamName={redTeam}
+                        blueWon={blueWon}
+                        matchId={matchId}
+                        enabled={showResult}
+                    />
                 </div>
             )}
         </div>

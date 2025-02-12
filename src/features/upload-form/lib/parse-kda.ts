@@ -1,4 +1,5 @@
-import type { PlayerKdaT, RawKdaT } from "../types";
+import type { PlayerKdaT } from "@/types/player";
+import type { RawKdaT } from "../types";
 
 /**
  *

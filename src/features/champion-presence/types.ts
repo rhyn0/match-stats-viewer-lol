@@ -1,4 +1,5 @@
-import { allChampions } from "@/features/upload-form/constants";
+import type { allChampions } from "@/features/upload-form/constants";
+import { championValidatorArk } from "@/types/league";
 import { type } from "arktype";
 
 export type Champion = (typeof allChampions)[number];
@@ -10,8 +11,6 @@ export type ChampionPresenceT = {
     timesBanned: number;
     totalMatches: number;
 };
-export const championValidatorArk = type.enumerated(...allChampions);
-
 export const ChampionPresenceArk = type({
     champName: championValidatorArk,
     wins: "number.integer >= 0",
