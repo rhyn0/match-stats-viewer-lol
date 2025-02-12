@@ -1,13 +1,7 @@
 import { PlayerPositionsArk } from "@/types/league";
+import { PlayerKdaArk, type PlayerKdaT } from "@/types/player";
 import { type } from "arktype";
 
-export const PlayerKdaArk = type({
-    raw: /^\d{1,2}\/\d{1,2}\/\d{1,2}/,
-    kills: "number.integer >= 0",
-    deaths: "number.integer >= 0",
-    assists: "number.integer >= 0",
-});
-export type PlayerKdaT = typeof PlayerKdaArk.infer;
 export type RawKdaT = PlayerKdaT["raw"];
 
 export const PlayerMatchRecordArk = type({

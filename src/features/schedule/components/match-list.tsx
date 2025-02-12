@@ -73,7 +73,7 @@ export default function MatchList() {
                     width={undefined}
                 />
             </Button>
-            <div className="space-y-8 max-w-2xl mx-auto">
+            <div className="space-y-8 max-w-4xl mx-auto">
                 {grouped.map(({ key, matches, scrollToRef }) => (
                     <section
                         key={key}

@@ -1,3 +1,4 @@
+import { allChampions } from "@/features/upload-form/constants";
 import { type } from "arktype";
 
 export const playerPositionOptions = [
@@ -15,3 +16,4 @@ export const LeagueScope = type.scope({
     position: type.enumerated(...playerPositionOptions),
     positionMaybe: "position | null",
 });
+export const championValidatorArk = type.enumerated(...allChampions);
