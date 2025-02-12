@@ -34,7 +34,7 @@ export default function LoLPostMatch({
     });
     if (matchQuery.isPending) {
         return (
-            <div className="w-[300px] h-60 bg-secondary flex justify-center">
+            <div className="w-[300px] h-60 bg-secondary flex justify-self-center justify-center">
                 <Spinner size="xl" />
             </div>
         );
@@ -43,7 +43,9 @@ export default function LoLPostMatch({
     if (matchQuery.isError) {
         return (
             <div className="bg-gray-800 text-white p-6 rounded-lg shadow-lg">
-                <TypoH3>Failed to fetch data for this match. Sorry.</TypoH3>
+                <TypoH3 className="text-center">
+                    Failed to fetch data for this match. Sorry.
+                </TypoH3>
                 <div className="flex justify-between">
                     <WinnerHeader
                         name={blueTeamName}
