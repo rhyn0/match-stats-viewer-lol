@@ -12,6 +12,8 @@ import React from "react";
 import useListStandingsQuery from "../hooks/use-list-standings";
 import calculateRanks from "../utils/calculate-rank";
 
+import type { RankedTeamStandingsT } from "../types";
+
 export interface TournamentStandingsProps {
     className?: string;
 }
@@ -47,10 +49,16 @@ export default function TournamentStandings({
                         <TableCell>
                             {team.teamName ?? team.teamDefaultName}
                         </TableCell>
-                        <TableCell className="text-right">{team.win}</TableCell>
+                        <TableCell className="text-right">
+                            {formatRecord(team)}
+                        </TableCell>
                     </TableRow>
                 ))}
             </TableBody>
         </Table>
     );
+}
+
+function formatRecord(team: RankedTeamStandingsT): string {
+    return `${team.win} - ${team.loss}`;
 }
