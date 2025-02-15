@@ -39,7 +39,7 @@ export default function TournamentStandings({
                 {standings.map((team) => (
                     <TableRow
                         key={team.rank}
-                        className="nth-8:border-red-500 nth-8:border-b-2"
+                        className="nth-8:border-red-500 dark:nth-8:border-red-500 nth-8:border-b-2"
                     >
                         <TableCell className="font-medium">
                             {team.rank}
