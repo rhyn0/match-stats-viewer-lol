@@ -30,5 +30,7 @@ export function sortTeams(a: TeamStandingsT, b: TeamStandingsT): number {
         return 1;
     }
     // for all intents and purposes, these teams are TIED for now
-    return 0;
+    // which can cause some hydration issues
+    // so here we sort by team name
+    return a.teamDefaultName.localeCompare(b.teamDefaultName);
 }

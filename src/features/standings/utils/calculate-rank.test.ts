@@ -47,8 +47,8 @@ describe("sortTeams", () => {
     it("should return that a team with lesser wins is later", () => {
         expect(sortTeams(lowerWins, higherWins)).toBe(1);
     });
-    it("should return that a team with same wins is equal", () => {
-        expect(sortTeams(lowerWins, duplLowerWins)).toBe(0);
+    it("should return that a team with same wins is sorted by their defaultName", () => {
+        expect(sortTeams(lowerWins, duplLowerWins)).toBe(-1);
     });
     it("should return that a team that beat another is earlier", () => {
         expect(sortTeams(duplHigherWinsButBeat, higherWins)).toBe(-1);
