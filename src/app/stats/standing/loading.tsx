@@ -6,8 +6,8 @@ export default function StandingsLoadingPage() {
     return (
         <main>
             <Card className="w-full max-w-2xl mx-auto">
-                <CardHeader>
-                    <Skeleton className="justify-center w-20 h-14" />
+                <CardHeader className="items-center">
+                    <Skeleton className="justify-center w-96 h-14" />
                 </CardHeader>
                 <CardContent>
                     <StandingTableLoading />

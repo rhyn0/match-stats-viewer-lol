@@ -6,7 +6,7 @@ import { getQueryClient } from "@/lib/query-client";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import React from "react";
 
-export default function StandingsPage() {
+export default async function StandingsPage() {
     const queryClient = getQueryClient();
 
     queryClient.prefetchQuery(prefetchStandingsQueryOptions());
