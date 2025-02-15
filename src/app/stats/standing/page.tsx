@@ -1,8 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { prefetchStandingsQueryOptions } from "@/features/standings/api/prefetch-list-standings";
+import StandingTableLoading from "@/features/standings/components/loading";
 import TournamentStandings from "@/features/standings/components/standings-table";
 import { getQueryClient } from "@/lib/query-client";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
+import React from "react";
 
 export default function StandingsPage() {
     const queryClient = getQueryClient();
@@ -19,7 +21,9 @@ export default function StandingsPage() {
                 </CardHeader>
                 <CardContent>
                     <HydrationBoundary state={dehydrate(queryClient)}>
-                        <TournamentStandings />
+                        <React.Suspense fallback={<StandingTableLoading />}>
+                            <TournamentStandings />
+                        </React.Suspense>
                     </HydrationBoundary>
                 </CardContent>
             </Card>
