@@ -30,7 +30,10 @@ export default function ClientPlacements({ className }: ClientPlacementsProps) {
 
             {teamId !== null ? (
                 <div className="m-10 w-full h-2/3">
-                    <PlacementLineChart teamId={teamId} />
+                    <PlacementLineChart
+                        teamId={teamId}
+                        className="max-h-[500px]"
+                    />
                 </div>
             ) : null}
         </section>
