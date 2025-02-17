@@ -30,6 +30,12 @@ const navComponents = {
                 to: "/stats/position",
                 description: "Charts visualization KDA stats by each position.",
             },
+            {
+                label: "Team Standings Probabilities",
+                to: "/team/placement",
+                description:
+                    "Charts visualization for likelihood of ending at each standing.",
+            },
         ],
     },
     information: {
