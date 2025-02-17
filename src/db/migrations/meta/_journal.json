@@ -71,6 +71,13 @@
             "when": 1738527049469,
             "tag": "0009_abandoned_killmonger",
             "breakpoints": true
+        },
+        {
+            "idx": 10,
+            "version": "6",
+            "when": 1739665967979,
+            "tag": "0010_conscious_swordsman",
+            "breakpoints": true
         }
     ]
 }
