@@ -92,7 +92,7 @@ function selectTransformTeamProbs(
     const defaultStanding = Array(11)
         .fill(null)
         .reduce((acc, _p, idx) => {
-            acc[idx] = 0;
+            acc[idx + 1] = 0;
             return acc;
         }, {});
     groupedStandings.set("1/25/2025", defaultStanding);
