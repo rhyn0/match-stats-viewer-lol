@@ -69,6 +69,16 @@ export const columns = [
                     return value.toFixed(3);
                 },
             }),
+            teamColumnHelper.accessor("averageWinTime", {
+                header: "Average Win Time (sec)",
+                meta: {
+                    filterVariant: "range",
+                },
+                cell: ({ getValue }) => {
+                    const value: number = getValue();
+                    return value.toFixed(3);
+                },
+            }),
         ],
     }),
 ];
