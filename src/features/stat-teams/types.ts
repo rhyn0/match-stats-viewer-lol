@@ -10,6 +10,7 @@ export interface TeamStatRecordI {
     overallWinRate: number;
     blueWinRate: number;
     redWinRate: number;
+    averageWinTime: number;
 }
 
 export const TeamGameDataArk = type({
@@ -23,10 +24,14 @@ export const TeamGameDataArk = type({
         blueGamesPlayed: "number.integer >= 0",
         redWins: "number.integer >= 0",
         redGamesPlayed: "number.integer >= 0",
+        averageWinTime: "number >= 0",
     },
 });
 export type TeamGameDataT = typeof TeamGameDataArk.infer;
-type TeamMatchSelectT = Pick<MatchSelectT, "blueWon" | "gameTimeSeconds">;
+export type TeamMatchSelectT = Pick<
+    MatchSelectT,
+    "blueWon" | "gameTimeSeconds"
+>;
 export type TeamStatQueryT = Omit<TeamSelectT, "modifiedAt"> & {
     matchesForTeamARel: TeamMatchSelectT[];
     matchesForTeamBRel: TeamMatchSelectT[];

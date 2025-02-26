@@ -30,6 +30,7 @@ export default function ClienTable() {
             record.matchStats.blueGamesPlayed +
             record.matchStats.redGamesPlayed,
         averageGameTime: record.matchStats.averageGameTime,
+        averageWinTime: record.matchStats.averageWinTime,
         blueWinRate: divideDefault(
             record.matchStats.blueWins,
             record.matchStats.blueGamesPlayed,

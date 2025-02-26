@@ -29,6 +29,7 @@ describe("calculateTeamStats", () => {
                 blueGamesPlayed: 2,
                 redWins: 1, // times blueWon is false, inside matchesForTeamBRel
                 redGamesPlayed: 2,
+                averageWinTime: 2700,
             },
         });
     });
@@ -54,6 +55,7 @@ describe("calculateTeamStats", () => {
                 blueGamesPlayed: 0,
                 redWins: 0,
                 redGamesPlayed: 0,
+                averageWinTime: 0,
             },
         });
     });
