@@ -10,6 +10,7 @@ export async function listTeamIdNames(db: Db): Promise<TeamListT[]> {
         .select({
             id: teams.id,
             teamName: sql<string>`COALESCE(${teams.teamName}, ${teams.defaultName})`,
+            playoffRank: teams.playoffRank,
         })
         .from(teams)
         .orderBy(asc(teams.id));

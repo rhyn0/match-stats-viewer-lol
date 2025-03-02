@@ -1,8 +1,8 @@
 {
     "version": "6",
     "dialect": "sqlite",
-    "id": "f9246c39-e9d9-4d32-bde6-9e264b755cb7",
-    "prevId": "4e21a9bb-1207-4447-a076-a8fc3ded44df",
+    "id": "33930962-fc36-4ed4-9d56-5917c90463d0",
+    "prevId": "f9246c39-e9d9-4d32-bde6-9e264b755cb7",
     "tables": {
         "bans_for_match": {
             "name": "bans_for_match",
@@ -415,6 +415,93 @@
                     "onUpdate": "no action"
                 }
             },
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {},
+            "checkConstraints": {}
+        },
+        "playoff_predictions": {
+            "name": "playoff_predictions",
+            "columns": {
+                "id": {
+                    "name": "id",
+                    "type": "integer",
+                    "primaryKey": true,
+                    "notNull": true,
+                    "autoincrement": true
+                },
+                "email": {
+                    "name": "email",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "quarter_1": {
+                    "name": "quarter_1",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "quarter_2": {
+                    "name": "quarter_2",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "quarter_3": {
+                    "name": "quarter_3",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "quarter_4": {
+                    "name": "quarter_4",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "semi_1": {
+                    "name": "semi_1",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "semi_2": {
+                    "name": "semi_2",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "finals": {
+                    "name": "finals",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "match_date": {
+                    "name": "match_date",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false,
+                    "default": "CURRENT_TIMESTAMP"
+                }
+            },
+            "indexes": {
+                "playoff_predictions_email_unique": {
+                    "name": "playoff_predictions_email_unique",
+                    "columns": ["email"],
+                    "isUnique": true
+                }
+            },
+            "foreignKeys": {},
             "compositePrimaryKeys": {},
             "uniqueConstraints": {},
             "checkConstraints": {}
