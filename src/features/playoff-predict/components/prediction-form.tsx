@@ -1,3 +1,4 @@
+import useLocalStorage from "@/components/hooks/use-localstorage";
 import { Button } from "@/components/ui/button";
 import {
     Form,
@@ -31,6 +32,8 @@ export function PlayoffPredictionForm({
     className,
     predictions,
 }: PlayoffPredictionFormProps) {
+    const [previouslySubmittted, setPreviouslySubmitted] =
+        useLocalStorage<boolean>("predictionSubmitted", false);
     const form = useForm<PredictionFormT>({
         resolver: arktypeResolver(PredictionFormArk),
         defaultValues: {
@@ -45,8 +48,9 @@ export function PlayoffPredictionForm({
         (values: PredictionFormT) => {
             console.log(values);
             predictionMutation.mutate(values);
+            setPreviouslySubmitted(false);
         },
-        [predictionMutation.mutate],
+        [predictionMutation.mutate, setPreviouslySubmitted],
     );
     return (
         <Form {...form}>
@@ -102,7 +106,10 @@ export function PlayoffPredictionForm({
                         <Button
                             type="submit"
                             className="bg-emerald-600"
-                            disabled={predictionMutation.isPending}
+                            disabled={
+                                predictionMutation.isPending ||
+                                previouslySubmittted
+                            }
                         >
                             {predictionMutation.isPending
                                 ? "Submitting"
