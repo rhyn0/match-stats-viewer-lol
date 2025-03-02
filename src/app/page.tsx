@@ -1,6 +1,6 @@
 import { TypoH2, TypoH3, TypoH4 } from "@/components/typography/headings";
 import banner from "@/public/banner.png";
-import { BarChart2, Trophy, Users } from "lucide-react";
+import { BarChart2, StretchHorizontal, Trophy, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -51,6 +51,11 @@ export default function Home() {
                             title: "Team Stats",
                             icon: BarChart2,
                             href: "/stats/team",
+                        },
+                        {
+                            title: "Playoffs",
+                            icon: StretchHorizontal,
+                            href: "/playoffs",
                         },
                         // { title: "Rules", icon: ChevronRight, href: "/rules" },
                     ].map((item) => (
