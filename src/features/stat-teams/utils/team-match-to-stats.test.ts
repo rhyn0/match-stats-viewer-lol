@@ -15,6 +15,7 @@ describe("calculateTeamStats", () => {
                 { blueWon: false, gameTimeSeconds: 2400 },
                 { blueWon: true, gameTimeSeconds: 3300 },
             ],
+            playoffRank: null,
         };
 
         const stats = calculateTeamStats(teamRecord);
@@ -41,6 +42,7 @@ describe("calculateTeamStats", () => {
             modifiedAt: new Date(),
             matchesForTeamARel: [],
             matchesForTeamBRel: [],
+            playoffRank: null,
         };
 
         const stats = calculateTeamStats(teamRecord);

@@ -12,6 +12,7 @@ export const teams = sqliteTable("participating_teams", {
     })
         .default(sql`CURRENT_TIMESTAMP`)
         .$onUpdateFn(() => new Date()),
+    playoffRank: integer("playoff_rank"),
 });
 
 export type TeamSelectT = typeof teams.$inferSelect;

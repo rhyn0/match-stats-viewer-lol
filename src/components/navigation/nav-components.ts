@@ -59,6 +59,11 @@ const navComponents = {
                 description:
                     "Current standings of the teams in the tournament.",
             },
+            {
+                label: "Playoffs",
+                to: "/playoffs",
+                description: "Playoffs Bracket and other fun stuff.",
+            },
         ],
     },
     //     playoffs: {
