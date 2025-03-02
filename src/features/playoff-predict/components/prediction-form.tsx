@@ -67,7 +67,7 @@ export function PlayoffPredictionForm({
                                         // @ts-expect-error - yah im not dealing with this one, see above
                                         bracket={field.value}
                                         onChange={field.onChange}
-                                        className="mx-24"
+                                        className="md:mx-24 mx-8"
                                         predictions={predictions}
                                         ref={field.ref}
                                     />

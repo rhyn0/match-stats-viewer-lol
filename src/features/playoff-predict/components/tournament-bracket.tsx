@@ -106,7 +106,9 @@ function MatchCard({
                         type="button"
                         data-decided={match.locked}
                     >
-                        <span>{team?.name || "TBD"}</span>
+                        <span className="md:max-w-36 truncate">
+                            {team?.name || "TBD"}
+                        </span>
                         {odds !== undefined && (
                             <span className="ml-2 text-sm bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full">
                                 {`${Math.round((index === 0 ? odds.blueWinOdds : odds.redWinOdds) * 100)}%`}
