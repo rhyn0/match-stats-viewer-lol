@@ -88,6 +88,7 @@ function MatchCard({
     disabled: boolean;
     odds: AggregatedPredictionsT | undefined;
 }) {
+    const validMatch = match.teams.every((t) => t !== null);
     return (
         <Card className="p-4 mb-4">
             <div className="flex flex-col space-y-2">
@@ -109,7 +110,7 @@ function MatchCard({
                         <span className="md:max-w-36 truncate">
                             {team?.name || "TBD"}
                         </span>
-                        {odds !== undefined && (
+                        {odds !== undefined && validMatch && (
                             <span className="ml-2 text-sm bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full">
                                 {`${Math.round((index === 0 ? odds.blueWinOdds : odds.redWinOdds) * 100)}%`}
                             </span>

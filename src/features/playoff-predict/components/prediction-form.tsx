@@ -48,7 +48,7 @@ export function PlayoffPredictionForm({
         (values: PredictionFormT) => {
             console.log(values);
             predictionMutation.mutate(values);
-            setPreviouslySubmitted(false);
+            setPreviouslySubmitted(true);
         },
         [predictionMutation.mutate, setPreviouslySubmitted],
     );
@@ -105,15 +105,20 @@ export function PlayoffPredictionForm({
                         />
                         <Button
                             type="submit"
+                            variant={
+                                previouslySubmittted ? "outline" : "default"
+                            }
                             className="bg-emerald-600"
                             disabled={
                                 predictionMutation.isPending ||
                                 previouslySubmittted
                             }
                         >
-                            {predictionMutation.isPending
-                                ? "Submitting"
-                                : "Submit"}
+                            {previouslySubmittted
+                                ? "Your prediction has been recorded"
+                                : predictionMutation.isPending
+                                  ? "Submitting"
+                                  : "Submit"}
                         </Button>
                     </div>
                 </div>
