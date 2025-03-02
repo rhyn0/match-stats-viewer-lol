@@ -57,7 +57,7 @@ export default function TournamentBracket({
                         disabled={disabled}
                         match={m}
                         onClick={(index) => handleWinnerSelection(m.id, index)}
-                        odds={predictions[m.id - 1]}
+                        odds={undefined}
                     />
                 ))}
             </div>
@@ -70,7 +70,7 @@ export default function TournamentBracket({
                     onClick={(index) =>
                         handleWinnerSelection(bracket[6].id, index)
                     }
-                    odds={predictions[6]}
+                    odds={undefined}
                 />
             </div>
         </div>
