@@ -2,6 +2,18 @@
 
 Similar to my [Valorant one](https://github.com/rhyn0/match-stats-viewer) but for League. Hopefully to build a viewer of statistics and cool graphs to highlight performances of players.
 
+## Tournament Over
+
+At the time of writing this, the tournament has ended and the page is down. Some screenshots are included below to see what everything looked like.
+
+![Landing Page - Light](./docs/light-landing-page.png)
+![Landing Page - Dark](./docs/dark-landing-page.png)
+![Schedule](./docs/schedule.png)
+![Champion Performance Stats](./docs/champion-stat-table.png)
+![Team Placement Probability Graph](./docs/placement-probability-graph.png)
+![Player Performance Stats](./docs/player-stat-table.png)
+![Playoff Prediction Bracket](./docs/playoff-prediction-form.png)
+
 ## Getting Started 
 
 Get the database setup to have something to view.
